@@ -1,0 +1,18 @@
+<div class="container">
+  <app-search-bar (search)="onSearch($event)"></app-search-bar>
+
+  <div class="top-bar">
+    <app-filter-tags (filter)="onFilter($event)"></app-filter-tags>
+    <button class="add-point-btn" (click)="openAddPointModal()">➕ Añadir Punto de Acopio</button>
+  </div>
+
+  <div class="content">
+    <div class="list">
+      <app-collection-card *ngFor="let point of filteredPoints" [point]="point"></app-collection-card>
+    </div>
+
+    <div class="map" id="map">
+      <!-- Aquí iría el mapa con Leaflet -->
+    </div>
+  </div>
+</div>
