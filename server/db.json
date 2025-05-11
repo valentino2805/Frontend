@@ -1,0 +1,52 @@
+{
+  "collectionPoints": [
+    {
+      "id": 1,
+      "name": "San Isidro Recicla",
+      "schedule": "10:00 - 16:00",
+      "phone": "+51 1 61252812",
+      "materials": [
+        "Papel",
+        "Cartón"
+      ],
+      "lat": -12.105,
+      "lng": -77.05
+    },
+    {
+      "id": 2,
+      "name": "Miraflores Eco",
+      "schedule": "09:00 - 15:00",
+      "phone": "+51 1 61727272",
+      "materials": [
+        "Plástico",
+        "Vidrio"
+      ],
+      "lat": -12.121,
+      "lng": -77.03
+    },
+    {
+      "id": 3,
+      "name": "Recolecta Surco",
+      "schedule": "08:00 - 14:00",
+      "phone": "+51 1 6008080",
+      "materials": [
+        "Cartón",
+        "Papel",
+        "Plástico"
+      ],
+      "lat": -12.14,
+      "lng": -76.99
+    },
+    {
+      "id": 4,
+      "name": "Aceite Usado Punto Verde",
+      "schedule": "11:00 - 17:00",
+      "phone": "+51 1 5235555",
+      "materials": [
+        "Aceite usado"
+      ],
+      "lat": -12.11,
+      "lng": -77.04
+    }
+  ]
+}

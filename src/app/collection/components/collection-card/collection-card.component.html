@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-header">
+    <h3>{{ point.name }}</h3>
+    <button class="see-more-btn" (click)="onSeeMore(point)">Ver más</button>
+  </div>
+  <p>{{ point.schedule }} horas</p>
+  <div>
+    <span *ngFor="let material of point.materials">{{ material }}</span>
+  </div>
+  <p>📞 {{ point.phone }}</p>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="showModal" (click)="closeModal()"></div>
+<div class="modal" *ngIf="showModal">
+  <button class="close-btn" (click)="closeModal()">✖</button>
+  <h2>{{ selectedPoint?.name }}</h2>
+  <p><strong>Horario:</strong> {{ selectedPoint?.schedule }} horas</p>
+  <p><strong>Teléfono:</strong> {{ selectedPoint?.phone }}</p>
+  <p><strong>Materiales aceptados:</strong></p>
+  <ul>
+    <li *ngFor="let material of selectedPoint?.materials">{{ material }}</li>
+  </ul>
+</div>
