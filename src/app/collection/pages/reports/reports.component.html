@@ -1,0 +1,43 @@
+<div class="reports-container">
+  <div class="reports-header">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Auditoría" class="reports-image">
+    <div class="reports-info">
+      <p class="reports-description" [innerHTML]="textos[idioma].descripcion"></p>
+      <div class="reports-actions">
+        <button class="export-btn" (click)="exportPDF()">{{ textos[idioma].exportarPDF }}</button>
+        <button class="export-btn" (click)="exportExcel()">{{ textos[idioma].exportarExcel }}</button>
+        <select class="filter-btn" [(ngModel)]="mesSeleccionado">
+          <option value="">{{ textos[idioma].mes }}</option>
+          <option *ngFor="let mes of mesesTraducidos" [value]="mes">{{ mes }}</option>
+        </select>
+        <select class="filter-btn" [(ngModel)]="anioSeleccionado">
+          <option value="">{{ textos[idioma].anio }}</option>
+          <option *ngFor="let anio of anios" [value]="anio">{{ anio }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="reports-title">{{ textos[idioma].historial }}</h2>
+
+  <div class="reports-table-container">
+    <table class="reports-table">
+      <thead>
+        <tr>
+          <th>{{ textos[idioma].zona }}</th>
+          <th>{{ textos[idioma].tipo }}</th>
+          <th>{{ textos[idioma].kg }}</th>
+          <th>{{ textos[idioma].fecha }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of filteredRows">
+          <td>{{ row.zona }}</td>
+          <td>{{ row.tipo }}</td>
+          <td>{{ row.kg }}</td>
+          <td>{{ row.fecha }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> 
