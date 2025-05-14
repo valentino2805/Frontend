@@ -1,0 +1,74 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1.5s ease-out both;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-8xl {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #2C6E49; /* Verde suave, asociado al ecosistema */
+}
+
+.text-4xl {
+  font-size: 2rem;
+  color: #4C9A2A; /* Verde más suave */
+}
+
+.bg-white {
+  background-color: #f0f9f4; /* Fondo suave y natural, con un tono crema claro */
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+/* Elegante sombra suave y natural */
+.text-shadow-soft {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Botón con efecto natural y ecológico */
+.p-button-raised {
+  background-color: #6DBE45; /* Verde fresco */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.p-button-raised:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
