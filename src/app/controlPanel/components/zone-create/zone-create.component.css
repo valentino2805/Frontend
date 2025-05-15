@@ -1,0 +1,89 @@
+.header{
+  display: flex;
+  *{
+    margin: 0 10px;
+  }
+  button{
+    background: #00A295;
+    color: #ffffff;
+    border: none;
+    width: 124px;
+    height: 30px;
+    margin-top: 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+}
+
+
+.add-zone-form-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100000;
+}
+
+.add-zone-form{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 20px;
+  width: 300px;
+  text-align: center;
+  animation: animation-panels 0.5s ease-in-out;
+
+
+  .form-group{
+    align-items: center;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  input{
+    padding: 5px;
+    margin-top: -10px!important;
+    width: 60%;
+    border: none;
+    border-radius: 10px;
+    background: #D9F2EF;
+  }
+  input:focus{
+    outline: none;
+  }
+
+  .mat-icon{
+    position: absolute;
+    top: 5%;
+    right: 2.5%;
+    cursor: pointer;
+    font-size: 2rem;
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+@keyframes animation-panels {
+  0%{
+    transform: scale(0)
+  }
+  100%{
+    transform: scale(1)
+  }
+}
+
+.bring-to-front{
+  display: block;
+}
+
+.return-to-hide{
+  display: none;
+}
+
