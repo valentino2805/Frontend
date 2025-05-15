@@ -10,8 +10,36 @@
   "rewardsTitle": "Rewards",
   "sustainableActionsTitle": "Sustainable Actions",
   "collectionPointsTitle": "Collection Points",
-  "reportsTitle": "Reports"
+  "reportsTitle": "Reports",
 
-
+  "controlPanel": {
+    "title" : "View the current level of waste",
+    "filter-by": "Filter by:",
+    "alerts" : "Alerts",
+    "warn" : "Thresholds have been exceeded",
+    "my-zone": "My Zones",
+    "add-zone" : "Add Zone",
+    "zone" : "Zone",
+    "ubication" : "Ubication",
+    "sensor" : "Sensor",
+    "action" : "Action for Sensor",
+    "see": "See",
+    "add": "Add",
+    "delete": "Delete",
+    "type-waste": "Type of waste",
+    "none": " ",
+    "monthly": "Monthly",
+    "weekly": "Weekly",
+    "annual": "Annual",
+    "name": "Name",
+    "register" : "Register",
+    "cancel" : "cancel",
+    "max-capacity": "Max Capacity (kg)",
+    "id-sensor": "Sensor´s ID",
+    "unities" : "Unities",
+    "type-Sensor": "Type Sensor",
+    "status" : "Status",
+    "add-sensor" : "Add Sensor"
+  }
 
 }

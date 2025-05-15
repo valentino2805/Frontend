@@ -33,13 +33,13 @@ export class AppComponent implements OnInit {
   title = 'CleanView';
   @ViewChild(MatSidenav, { static: true }) sidenav!: MatSidenav;
   activeOption: string = '';
-  isSidenavOpen: boolean = true;
+  isSidenavOpen = true;
 
   otherOptions = [
     { icon: 'https://cdn-icons-png.flaticon.com/512/25/25694.png', path: '/home', title: 'homeTitle' },
-    { icon: 'https://cdn-icons-png.flaticon.com/512/3917/3917028.png', path: '/controlpanel', title: 'controlPanelTitle' },
-    { icon: 'https://cdn-icons-png.flaticon.com/512/2910/2910768.png', path: '/sustainableactions', title: 'sustainableActionsTitle' },
-    { icon: 'https://cdn-icons-png.flaticon.com/512/535/535239.png', path: '/collectionpoints', title: 'collectionPointsTitle' },
+    { icon: 'https://cdn-icons-png.flaticon.com/512/3917/3917028.png', path: '/controlPanel', title: 'controlPanelTitle' },
+    { icon: 'https://cdn-icons-png.flaticon.com/512/2910/2910768.png', path: '/sustainableActions', title: 'sustainableActionsTitle' },
+    { icon: 'https://cdn-icons-png.flaticon.com/512/535/535239.png', path: '/collection points', title: 'collectionPointsTitle' },
     { icon: 'https://cdn-icons-png.flaticon.com/512/992/992700.png', path: '/reports', title: 'reportsTitle' },
   ];
 

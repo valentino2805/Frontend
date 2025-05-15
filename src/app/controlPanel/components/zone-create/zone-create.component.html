@@ -1,0 +1,21 @@
+<div class="header ">
+  <h4>{{ "controlPanel.my-zone" | translate }}</h4>
+  <button (click)="addNewZone()" class="addNewZone" role="button">{{ "controlPanel.add-zone" | translate }}</button>
+  <div #formAddZone class="add-zone-form-container return-to-hide ">
+    <form class="add-zone-form">
+      <h4>{{ "controlPanel.add-zone" | translate }}</h4> <br>
+      <mat-icon (click)="cancelAddNewZone()">close</mat-icon>
+      <div class="form-group">
+        <label for="nameZnInput">{{ "controlPanel.name" | translate }}</label>
+        <input id="nameZnInput" type="text" class="name-zone">
+      </div>
+      <div class="form-group">
+        <label for="ubicationZnInput">{{ "controlPanel.ubication" | translate }}</label>
+        <input id="ubicationZnInput" type="text" class="ubication-zone">
+      </div>
+      <br>
+      <button type="button" id="addZoneBtn" class="search-zone-button" role="button" (click)="registerZone()">{{ "controlPanel.register" | translate }}</button>
+      <br>
+    </form>
+  </div>
+</div>
