@@ -40,6 +40,11 @@
     "type-Sensor": "Type Sensor",
     "status" : "Status",
     "add-sensor" : "Add Sensor"
+  },
+
+  "sustainableActions": {
+    "title": "Reducing environmental impact is also a smart business strategy.",
+    "featuredTips": "Featured Tips of the Month"
   }
 
 }

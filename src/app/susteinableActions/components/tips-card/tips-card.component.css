@@ -1,0 +1,29 @@
+.tip-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fefefe;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.tip-card h3 {
+  margin: 0 0 0.5rem 0;
+}
+.tip-card p {
+  margin: 0 0 1rem 0;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+}
+.actions button {
+  border: none;
+  background-color: #e0e0e0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.actions .delete {
+  background-color: #f44336;
+  color: white;
+}

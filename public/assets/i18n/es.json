@@ -39,8 +39,11 @@
     "type-Sensor": "Tipo de Sensor",
     "status" : "Estado",
     "add-sensor" : "Añadir Sensor"
+  },
+
+  "sustainableActions": {
+    "title": "Reducir el impacto ambiental también es una estrategia empresarial inteligente.",
+    "featuredTips": "Tips destacados del mes"
   }
-
-
 
 }

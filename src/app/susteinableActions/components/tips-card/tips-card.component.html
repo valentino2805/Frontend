@@ -1,0 +1,10 @@
+<div class="tip-card">
+  <h3>{{ action.title }}</h3>
+  <p>{{ action.description }}</p>
+  <div class="actions">
+    <button (click)="toggleFavorite.emit(action)">
+      {{ action.favorite ? '★ Favorito' : '☆ Favorito' }}
+    </button>
+    <button class="delete" (click)="delete.emit(action.id)">🗑 Eliminar</button>
+  </div>
+</div>
