@@ -7,6 +7,7 @@ import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import { ZoneService } from '../../../shared/services/zone.service';
 import { Store } from '../../../controlPanel/model/Store.entity';
+import {TranslateModule} from "@ngx-translate/core";
 
 interface ReportRow {
   zona: string;
@@ -22,7 +23,7 @@ interface ReportRow {
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule, TranslateModule]
 })
 export class ReportsComponent implements OnInit {
   idioma: 'es' | 'en' = 'es';
@@ -155,4 +156,4 @@ export class ReportsComponent implements OnInit {
     const data: Blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
     saveAs(data, 'reporte.xlsx');
   }
-} 
+}

@@ -2,13 +2,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CollectionPoint } from '../../model/collection-points.entity';
 import { CollectionPointsService } from '../../services/collection-points.service';
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-collection-card',
   templateUrl: './collection-card.component.html',
   standalone: true,
   styleUrls: ['./collection-card.component.scss'],
-  imports: [CommonModule]
+  imports: [CommonModule, TranslateModule]
 })
 export class CollectionCardComponent {
   @Input() point!: CollectionPoint;

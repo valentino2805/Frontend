@@ -8,6 +8,7 @@ import { CollectionPointsService } from '../../services/collection-points.servic
 import { AddCollectionPointModalComponent } from '../../components/add-collection-point/add-collection-point.component';
 import * as L from 'leaflet';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-collection-points',
@@ -19,7 +20,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     CollectionCardComponent,
     SearchBarComponent,
     FilterTagsComponent,
-    MatDialogModule
+    MatDialogModule,
+    TranslateModule
   ]
 })
 export class CollectionPointsPage implements OnInit {

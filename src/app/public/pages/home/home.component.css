@@ -72,3 +72,27 @@
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
+
+video {
+  z-index: 0;
+}
+
+div.w-full {
+  position: relative;
+  z-index: 1; /* Se asegura de estar sobre el video */
+}
+
+
+
+.video-background {
+  position: fixed; /* Para que se quede fijo en la pantalla */
+  top: 62px; /* Ajusta este valor según la altura de tu toolbar */
+  left: 0;
+  width: 100vw; /* 100% del ancho de la ventana del navegador */
+  height: calc(100vh - 50px); /* Resta la altura de la toolbar para que no la cubra */
+  object-fit: cover; /* Mantiene la proporción del video y lo escala */
+  opacity: 0.5; /* Video translúcido */
+  z-index: -1; /* Asegura que el video esté detrás del contenido */
+}
+
+

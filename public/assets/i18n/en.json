@@ -1,9 +1,7 @@
 {
-
   "welcomeTitle": "Welcome to CleanView",
-  "subtitle": "From ------",
+  "subtitle": "Kord Industries",
   "getStarted": "Get Started",
-
 
   "homeTitle": "Home",
   "controlPanelTitle": "Control Panel",
@@ -11,6 +9,7 @@
   "sustainableActionsTitle": "Sustainable Actions",
   "collectionPointsTitle": "Collection Points",
   "reportsTitle": "Reports",
+  "addCollectionPoint": "Add Collection Point",
 
   "controlPanel": {
     "title" : "View the current level of waste",
@@ -33,13 +32,46 @@
     "annual": "Annual",
     "name": "Name",
     "register" : "Register",
-    "cancel" : "cancel",
+    "cancel" : "Cancel",
     "max-capacity": "Max Capacity (kg)",
     "id-sensor": "Sensor´s ID",
     "unities" : "Unities",
     "type-Sensor": "Type Sensor",
     "status" : "Status",
     "add-sensor" : "Add Sensor"
-  }
+  },
+
+
+  "newPointTitle": "New Collection Point",
+  "nameLabel": "Name",
+  "scheduleLabel": "Schedule",
+  "phoneLabel": "Phone",
+  "materialsLabel": "Materials (separated by comma)",
+  "latitudeLabel": "Latitude",
+  "longitudeLabel": "Longitude",
+  "cancelButton": "Cancel",
+  "saveButton": "Save",
+
+  "seeMore": "See More",
+  "delete": "Delete",
+
+
+  "locationLabel": "Location",
+
+  "filterBy": "Filter by",
+  "residue": "Residue",
+  "district": "District",
+
+  "searchPlaceholder": "Search",
+
+  "exportPDF": "Export PDF",
+  "exportExcel": "Export Excel",
+  "month": "Month",
+  "year": "Year",
+  "history": "History",
+  "zone": "Zone",
+  "type": "Type",
+  "kg": "Kg",
+  "date": "Date"
 
 }

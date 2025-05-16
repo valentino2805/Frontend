@@ -1,5 +1,15 @@
-<div class="w-full flex flex-col items-center justify-center min-h-screen bg-white">
-  <h1 class="text-8xl animate-fade-in text-shadow-soft">{{ 'welcomeTitle' | translate }}</h1>
-  <p class="text-4xl animate-fade-in mt-4">{{ 'subtitle' | translate }}</p>
-  <button class="p-button-raised mt-4">{{ 'getStarted' | translate }}</button>
+<!-- home.component.html -->
+<div class="w-full flex flex-col items-center justify-center min-h-screen bg-white relative">
+  <!-- Video de fondo -->
+  <video class="video-background" autoplay muted loop>
+    <source src="arbol.mp4" type="video/mp4">
+    Tu navegador no soporta la reproducción de videos.
+  </video>
+
+  <!-- Contenido -->
+  <div class="content-layer text-center relative z-10">
+    <h1 class="text-8xl animate-fade-in text-shadow-soft">{{ 'welcomeTitle' | translate }}</h1>
+    <p class="text-4xl animate-fade-in mt-4">{{ 'subtitle' | translate }}</p>
+    <button (click)="navigateToControlPanel()" class="p-button-raised mt-4">{{ 'getStarted' | translate }}</button>
+  </div>
 </div>

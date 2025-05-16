@@ -94,21 +94,134 @@
   }
 }
 
+/* Estilo para el fondo del modal */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Fondo más oscuro */
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Estilo de la ventana modal */
+.modal-content {
+  background-color: #eaf1f1; /* Fondo suave de azul/verde claro */
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.4s ease-out;
+  position: relative;
+}
+
+/* Título del modal con fondo verde */
+h2 {
+  font-size: 2rem;
+  color: white; /* Texto blanco */
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: #2d6a4f; /* Fondo verde */
+  padding: 10px;
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Estilo para el botón de cerrar */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  color: #000000; /* Verde para combinar con el tema */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #4b8f77; /* Verde más claro al pasar el cursor */
+}
+
+/* Detalles del modal */
 .modal-details {
-  margin-top: 1rem;
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+  line-height: 1.6;
+}
 
-  p {
-    margin: 0.5rem 0;
+/* Párrafos con detalles */
+.modal-details p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+/* Estilo de la lista de materiales */
+.modal-details ul {
+  padding-left: 20px;
+}
+
+.modal-details li {
+  margin: 5px 0;
+  list-style-type: disc;
+  font-size: 1.1rem;
+  color: #4b8f77; /* Verde suave para los materiales */
+}
+
+/* Animación para la entrada del modal (desvanecimiento) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animación para que el modal se deslice desde abajo */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto de opacidad cuando se pasa el cursor por encima del modal */
+.modal-content:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+    padding: 1rem;
   }
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0;
-
-    li {
-      padding: 0.25rem 0;
-      color: #666;
-    }
+  h2 {
+    font-size: 1.6rem;
   }
-} 
+
+  .modal-details p, .modal-details ul {
+    font-size: 1rem;
+  }
+
+  .close {
+    font-size: 1.5rem;
+  }
+}
+

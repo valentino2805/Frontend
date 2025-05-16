@@ -3,13 +3,15 @@
 
   <div class="top-bar">
     <app-filter-tags (filter)="onFilter($event)"></app-filter-tags>
-    <button class="add-point-btn" (click)="openAddPointModal()">➕ Añadir Punto de Acopio</button>
+    <button class="add-point-btn" (click)="openAddPointModal()">
+      ➕ {{ 'addCollectionPoint' | translate }}
+    </button>
   </div>
 
   <div class="content">
     <div class="list">
-      <app-collection-card 
-        *ngFor="let point of filteredPoints" 
+      <app-collection-card
+        *ngFor="let point of filteredPoints"
         [point]="point"
         (pointDeleted)="onPointDeleted($event)">
       </app-collection-card>

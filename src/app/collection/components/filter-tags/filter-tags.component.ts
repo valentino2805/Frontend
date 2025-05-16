@@ -1,9 +1,13 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-filter-tags',
   templateUrl: './filter-tags.component.html',
   standalone: true,
+  imports: [
+    TranslateModule
+  ],
   styleUrls: ['./filter-tags.component.scss']
 })
 export class FilterTagsComponent {

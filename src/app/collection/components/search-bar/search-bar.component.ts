@@ -1,9 +1,13 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   standalone: true,
+  imports: [
+    TranslateModule
+  ],
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent {
