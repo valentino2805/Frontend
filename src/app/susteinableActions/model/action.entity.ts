@@ -5,17 +5,11 @@ export class Action {
   type: string;
   favorite: boolean;
 
-  constructor(action: {
-    id?: number,
-    title?: string,
-    description?: string,
-    type?: string,
-    favorite?: boolean
-  }) {
-    this.id = action.id || 0;
-    this.title = action.title || '';
-    this.description = action.description || '';
-    this.type = action.type || '';
-    this.favorite = action.favorite ?? false;
+  constructor(init?: Partial<Action>) {
+    this.id = init?.id ?? 0;
+    this.title = init?.title ?? '';
+    this.description = init?.description ?? '';
+    this.type = init?.type ?? '';
+    this.favorite = init?.favorite ?? false;
   }
 }
