@@ -44,7 +44,19 @@
 
   "sustainableActions": {
     "title": "Reducing environmental impact is also a smart business strategy.",
-    "featuredTips": "Featured Tips of the Month"
+    "featuredTips": "Featured Tips of the Month",
+    "addTitle": "Add Sustainable Action",
+    "titlePlaceholder": "Title",
+    "descriptionPlaceholder": "Description",
+    "selectType": "Select Type",
+    "typeStorage": "Storage",
+    "typeOperational": "Operational Improvement",
+    "typeRegulation": "Regulation",
+    "saveButton": "Save",
+    "all": "All",
+    "searchPlaceholder": "Search sustainable actions",
+    "delete": "Delete"
   }
+
 
 }

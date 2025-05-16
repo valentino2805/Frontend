@@ -4,14 +4,16 @@
     <img class="welcome-section-img" src="https://efectoresponsable.pe/wp-content/uploads/2022/06/imagen-780x470.jpg" alt="Sustainable Actions">
   </div>
 
-  <button (click)="openModal()">➕ Agregar Acción</button>
-
+  <button class="button" (click)="openModal()"> {{ 'sustainableActions.addTitle' | translate }}</button>
+  <div>
   <app-actions-create-and-edit
     *ngIf="showModal"
     [action]="newAction!"
     (save)="onSaveAction($event)"
     (close)="onCloseModal()">
   </app-actions-create-and-edit>
-
+  </div>
+  <div>
   <app-tips-list [externalActions]="accionesDesdeModal"></app-tips-list>
+  </div>
 </div>
