@@ -70,5 +70,21 @@
   "zone": "Zona",
   "type": "Tipo",
   "kg": "Kg",
-  "date": "Fecha"
+  "date": "Fecha",
+
+  "sustainableActions": {
+    "title": "Reducir el impacto ambiental también es una estrategia empresarial inteligente.",
+    "featuredTips": "Tips destacados del mes",
+    "addTitle": "Agregar Acción Sostenible",
+    "titlePlaceholder": "Título",
+    "descriptionPlaceholder": "Descripción",
+    "selectType": "Selecciona Tipo",
+    "typeStorage": "Almacenamiento",
+    "typeOperational": "Mejora Operativa",
+    "typeRegulation": "Normativa",
+    "saveButton": "Guardar",
+    "all": "Todos",
+    "searchPlaceholder": "Buscar acciones sostenibles",
+    "delete": "Eliminar"
+  }
 }
