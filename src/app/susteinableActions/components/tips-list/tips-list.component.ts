@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {TipsCardComponent} from "../tips-card/tips-card.component";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -11,19 +11,26 @@ import { Action } from '../../model/action.entity';
   templateUrl: './tips-list.component.html',
   styleUrl: './tips-list.component.css'
 })
-export class TipsListComponent  implements OnInit {
+export class TipsListComponent implements OnInit, OnChanges {
   actions: Action[] = [];
   filteredActions: Action[] = [];
   searchTerm: string = '';
   filterType: string = '';
+  @Input() externalActions: Action[] = [];
 
   ngOnInit(): void {
-    this.actions = [
-      new Action({ id: 1, title: 'Reducir Plástico', description: 'Evita plásticos de un solo uso', type: 'almacenamiento' }),
-      new Action({ id: 2, title: 'Apaga las luces', description: 'Ahorra energía eléctrica', type: 'mejora operativa' }),
-      new Action({ id: 3, title: 'Camina más', description: 'Reduce tu huella de carbono', type: 'normativas' }),
-    ];
-    this.filteredActions = [...this.actions];
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['externalActions']) {
+      this.actions = [...[new Action({ id: 1, title: 'Reducir Plástico', description: 'Evita plásticos de un solo uso', type: 'almacenamiento' }),
+          new Action({ id: 2, title: 'Apaga las luces', description: 'Ahorra energía eléctrica', type: 'mejora operativa' }),
+          new Action({ id: 3, title: 'Camina más', description: 'Reduce tu huella de carbono', type: 'normativas' }),],
+        ...this.externalActions
+      ];
+      this.applyFilters();
+    }
   }
 
   onSearch(): void {

@@ -1,1 +1,15 @@
-<p>actions-create-and-edit works!</p>
+<div class="modal">
+  <h2>Agregar Acción Sostenible</h2>
+  <form (ngSubmit)="submitForm()">
+    <input type="text" [(ngModel)]="action.title" name="title" placeholder="Título" required />
+    <textarea [(ngModel)]="action.description" name="description" placeholder="Descripción" required></textarea>
+    <select [(ngModel)]="action.type" name="type" required>
+      <option value="">Selecciona Tipo</option>
+      <option value="almacenamiento">Almacenamiento</option>
+      <option value="mejora operativa">Mejora Operativa</option>
+      <option value="normativas">Normativa</option>
+    </select>
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="close.emit()">Cancelar</button>
+  </form>
+</div>
