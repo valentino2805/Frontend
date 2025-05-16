@@ -10,6 +10,10 @@ export class Sensor {
   lastReadingDate = "";
   typeSensor = "";
   unities = "";
+  capacidad = "";
+  nivelActual = "";
+  porcentaje = "";
+  recojo = "";
 
   constructor(sensor: {
     id: string,
@@ -21,6 +25,10 @@ export class Sensor {
     lastReadingDate: string,
     typeSensor: string,
     unities: string,
+    capacidad?: string,
+    nivelActual?: string,
+    porcentaje?: string,
+    recojo?: string
   }) {
     this.id = sensor.id;
     this.numberSensor = sensor.numberSensor;
@@ -31,6 +39,9 @@ export class Sensor {
     this.lastReadingDate = sensor.lastReadingDate ? sensor.lastReadingDate : "";
     this.typeSensor = sensor.typeSensor ? sensor.typeSensor : "";
     this.unities = sensor.unities;
+    this.capacidad = sensor.capacidad || "";
+    this.nivelActual = sensor.nivelActual || "";
+    this.porcentaje = sensor.porcentaje || "";
+    this.recojo = sensor.recojo || "";
   }
-
 }

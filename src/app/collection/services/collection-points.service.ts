@@ -21,4 +21,13 @@ export class CollectionPointsService {
     return this.http.post<CollectionPoint>(this.apiUrl, newPoint);
   }
 
+  // Método para eliminar un punto de acopio
+  deleteCollectionPoint(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  // Método para actualizar un punto de acopio
+  updateCollectionPoint(id: number, updatedPoint: CollectionPoint): Observable<CollectionPoint> {
+    return this.http.put<CollectionPoint>(`${this.apiUrl}/${id}`, updatedPoint);
+  }
 }

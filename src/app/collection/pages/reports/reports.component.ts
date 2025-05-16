@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
+import { ZoneService } from '../../../shared/services/zone.service';
+import { Store } from '../../../controlPanel/model/Store.entity';
 
 interface ReportRow {
   zona: string;
@@ -22,7 +24,7 @@ interface ReportRow {
   standalone: true,
   imports: [FormsModule, CommonModule]
 })
-export class ReportsComponent {
+export class ReportsComponent implements OnInit {
   idioma: 'es' | 'en' = 'es';
 
   textos = {
@@ -68,11 +70,50 @@ export class ReportsComponent {
   mesSeleccionado = '';
   anioSeleccionado = '';
 
-  rows: ReportRow[] = [
-    { zona: 'Planta Norte', tipo: 'Orgánico', kg: '480 kg', fecha: '04/04/2025', mes: 'Abril', anio: '2025' },
-    { zona: 'Planta Sur', tipo: 'Plástico', kg: '320 kg', fecha: '15/03/2025', mes: 'Marzo', anio: '2025' },
-    { zona: 'Planta Este', tipo: 'Vidrio', kg: '150 kg', fecha: '20/04/2024', mes: 'Abril', anio: '2024' }
-  ];
+  rows: ReportRow[] = [];
+
+  constructor(private zoneService: ZoneService) {}
+
+  ngOnInit() {
+    this.zoneService.getAll().subscribe((zones: Store[]) => {
+      this.rows = [];
+      zones.forEach(zone => {
+        if (zone.sensor && zone.sensor.length > 0) {
+          zone.sensor.forEach(sensor => {
+            // Si hay varios tipos de residuo por sensor, puedes adaptar esto
+            this.rows.push({
+              zona: zone.name,
+              tipo: sensor.typeSensor || '-',
+              kg: (sensor.nivelActual ? sensor.nivelActual + ' kg' : '-'),
+              fecha: sensor.lastReadingDate || sensor.recojo || '-',
+              mes: this.getMes(sensor.lastReadingDate || sensor.recojo),
+              anio: this.getAnio(sensor.lastReadingDate || sensor.recojo)
+            });
+          });
+        }
+      });
+    });
+  }
+
+  getMes(fecha: string): string {
+    if (!fecha) return '';
+    const partes = fecha.split('/');
+    if (partes.length === 3) {
+      // Formato dd/mm/yyyy
+      const mesNum = parseInt(partes[1], 10) - 1;
+      return this.meses[mesNum] || '';
+    }
+    return '';
+  }
+
+  getAnio(fecha: string): string {
+    if (!fecha) return '';
+    const partes = fecha.split('/');
+    if (partes.length === 3) {
+      return partes[2];
+    }
+    return '';
+  }
 
   get filteredRows() {
     return this.rows.filter(row =>

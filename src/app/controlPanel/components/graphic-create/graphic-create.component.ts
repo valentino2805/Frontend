@@ -4,10 +4,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import { MatOption, MatSelect} from "@angular/material/select";
 import Chart from 'chart.js/auto';
-import {Store} from "../../model/Store.entity";
-import {StoreService} from "../../../shared/services/store.service";
-import {GraphicService} from "../../../shared/services/graphic.service";
-import {FormsModule} from "@angular/forms";
+import { Store } from '../../model/Store.entity';
+import { ZoneService } from '../../../shared/services/zone.service';
+import { GraphicService } from '../../../shared/services/graphic.service';
+import { FormsModule } from "@angular/forms";
 
 interface Type {
   value: string;
@@ -30,7 +30,7 @@ interface Time {
 // @Autor: Gabriel Gordon
 
 
-export class GraphicCreateComponent implements OnInit{
+export class GraphicCreateComponent implements OnInit, AfterViewInit{
 
   currentStore: Store | null = null;
   selectedType: string = '';
@@ -42,33 +42,20 @@ export class GraphicCreateComponent implements OnInit{
   currentDate = new Date();
 
   constructor(
-    private storeService: StoreService,
-    private graphicService: GraphicService
+    private graphicService: GraphicService,
+    private zoneService: ZoneService
   ) {}
 
   stores: Store[] = [];
 
   ngOnInit(){
-    this.storeService.store$.subscribe(store => {
-      this.currentStore = store;
-      if (store) {
-        this.stores.push(store);
-      }
-    })
-    this.graphicService.redrawChart$.subscribe(() => {
-      this.buildGraphic();
-    });
+    // Si necesitas redibujar el gráfico desde otro lugar, deberás volver a obtener las zonas y llamar a buildGraphic(zones)
   }
 
-
-  @ViewChild('wasteChart') wasteChartRef!: ElementRef;
+  @ViewChild('wasteChart') wasteChartRef!: ElementRef<HTMLCanvasElement>;
   chart: Chart | undefined;
 
-
   name = 'graphic-create';
-
-
-
 
   types: Type[] = [
     {value: 'none', viewValue: 'none'},
@@ -82,11 +69,6 @@ export class GraphicCreateComponent implements OnInit{
     {value: 'annual', viewValue: 'annual'},
   ];
 
-
-
-
-
-  //GENERATE A RANDOM NUMBER ARRAY
   randomArrayNumber(){
     let array = [];
     for (let i = 0; i < this.months.length; i++) {
@@ -95,45 +77,48 @@ export class GraphicCreateComponent implements OnInit{
     return array;
   }
 
-  // BUILD A GRAPHIC FOR STATISTICS
-  buildGraphic() {
+  ngAfterViewInit() {
+    this.zoneService.getAll().subscribe((zones: Store[]) => {
+      this.buildGraphic(zones);
+    });
+  }
+
+  buildGraphic(zones: Store[]) {
     const ctx = this.wasteChartRef.nativeElement.getContext('2d');
+    if (this.chart) this.chart.destroy();
 
-    //Destroy last graphic
-    if (this.chart) {
-      this.chart.destroy();
-    }
+    // Etiquetas de ejemplo (puedes hacerlas dinámicas si tienes fechas)
+    const labels = ['Enero', 'Febrero', 'Marzo'];
+    const colors = ['#E75C5C', '#22306A', '#4EC6D0', '#F7B801', '#A259F7', '#43AA8B'];
+    const datasets = zones.map((zone, idx) => {
+      // Suma de nivelActual de todos los sensores (puedes adaptar si tienes fechas)
+      const data = labels.map(_ => {
+        if (!zone.sensor) return 0;
+        return zone.sensor.reduce((sum, s) => sum + (parseFloat(s.nivelActual) || 0), 0);
+      });
+      return {
+        label: zone.name,
+        data,
+        backgroundColor: colors[idx % colors.length]
+      };
+    });
 
-    const  datasetsZn = this.stores
-      .filter(store => store.amountSensor > 0)
-      .map(store => ({
-        label: store.name,
-        data: this.randomArrayNumber().slice(0, this.currentMonth + 1),
-        backgroundColor: store.color,
-      }));
-
-    //Build a new graphic
-    this.chart = new Chart(ctx, {
+    this.chart = new Chart(ctx!, {
       type: 'bar',
       data: {
-        labels: this.months.slice(0, this.currentMonth + 1),
-        datasets: datasetsZn,
+        labels,
+        datasets
       },
       options: {
-        responsive: true,
+        responsive: false,
         scales: {
           y: {
-            title: {
-              display: true,
-              text: 'kg'
-            },
-            beginAtZero: true
+            beginAtZero: true,
+            title: { display: true, text: 'kg' }
           }
         }
       }
     });
   }
-
-
 }
 

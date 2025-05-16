@@ -8,7 +8,11 @@
 
   <div class="content">
     <div class="list">
-      <app-collection-card *ngFor="let point of filteredPoints" [point]="point"></app-collection-card>
+      <app-collection-card 
+        *ngFor="let point of filteredPoints" 
+        [point]="point"
+        (pointDeleted)="onPointDeleted($event)">
+      </app-collection-card>
     </div>
 
     <div class="map" id="map">

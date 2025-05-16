@@ -48,5 +48,91 @@
       "lat": -12.11,
       "lng": -77.04
     }
+  ],
+  "zones": [
+    {
+      "id": "c80af617-c5ab-40b9-b7a2-06eeb08cc90a",
+      "name": "z",
+      "numberStore": 1,
+      "amountSensor": 0,
+      "percent": "0",
+      "sensor": [
+        {
+          "id": "8b20b472-5e7e-4bd7-a986-349629b3e533",
+          "numberSensor": 2,
+          "wasteDetected": [],
+          "typeSensor": "Plástico",
+          "sensorUbication": "",
+          "status": "",
+          "batteryLevel": 0,
+          "lastReadingDate": "",
+          "unities": 19
+        },
+        {
+          "id": "asa",
+          "numberSensor": 3,
+          "wasteDetected": [],
+          "typeSensor": "Plástico",
+          "sensorUbication": "",
+          "status": "",
+          "batteryLevel": 0,
+          "lastReadingDate": "",
+          "unities": 7
+        },
+        {
+          "id": "3c43853d-2f59-47bf-bbf0-7d661d5968c5",
+          "numberSensor": 4,
+          "wasteDetected": [],
+          "typeSensor": "Plástico",
+          "sensorUbication": "",
+          "status": "",
+          "batteryLevel": 0,
+          "lastReadingDate": "",
+          "unities": "",
+          "capacidad": 14,
+          "nivelActual": "as",
+          "porcentaje": "50%",
+          "recojo": "Si"
+        }
+      ],
+      "color": "#eb88cb",
+      "ubication": "zzz"
+    },
+    {
+      "id": "e05d2a2f-8164-4284-b7a1-0d4b399d17ef",
+      "name": "za",
+      "numberStore": 2,
+      "amountSensor": 0,
+      "percent": "0",
+      "sensor": [],
+      "color": "#4184bc",
+      "ubication": "aaaa"
+    },
+    {
+      "id": "6b275d34-4c3d-46b3-a82e-002680865123",
+      "name": "Z",
+      "numberStore": 3,
+      "amountSensor": 0,
+      "percent": "0",
+      "sensor": [
+        {
+          "id": "768f594c-dea2-4271-b80d-a18ce0a2e6a6",
+          "numberSensor": 1,
+          "wasteDetected": [],
+          "typeSensor": "Orgánico",
+          "sensorUbication": "",
+          "status": "",
+          "batteryLevel": 0,
+          "lastReadingDate": "",
+          "unities": "",
+          "capacidad": 18,
+          "nivelActual": "z",
+          "porcentaje": "12%",
+          "recojo": "x"
+        }
+      ],
+      "color": "#f4ed2c",
+      "ubication": "aa"
+    }
   ]
 }

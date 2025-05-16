@@ -1,24 +1,33 @@
-<div class="card">
+<div class="collection-card">
   <div class="card-header">
     <h3>{{ point.name }}</h3>
-    <button class="see-more-btn" (click)="onSeeMore(point)">Ver más</button>
+    <div class="card-actions">
+      <button class="btn-see" (click)="onSeeMore(point)">Ver más</button>
+      <button class="btn-delete" (click)="deletePoint(point.id)">Eliminar</button>
+    </div>
   </div>
-  <p>{{ point.schedule }} horas</p>
-  <div>
-    <span *ngFor="let material of point.materials">{{ material }}</span>
+  <div class="card-content">
+    <p><strong>Horario:</strong> {{ point.schedule }}</p>
+    <p><strong>Teléfono:</strong> {{ point.phone }}</p>
+    <p><strong>Materiales:</strong> {{ point.materials.join(', ') }}</p>
   </div>
-  <p>📞 {{ point.phone }}</p>
 </div>
 
-<!-- Modal -->
-<div class="modal-backdrop" *ngIf="showModal" (click)="closeModal()"></div>
+<!-- Modal para ver más detalles -->
 <div class="modal" *ngIf="showModal">
-  <button class="close-btn" (click)="closeModal()">✖</button>
-  <h2>{{ selectedPoint?.name }}</h2>
-  <p><strong>Horario:</strong> {{ selectedPoint?.schedule }} horas</p>
-  <p><strong>Teléfono:</strong> {{ selectedPoint?.phone }}</p>
-  <p><strong>Materiales aceptados:</strong></p>
-  <ul>
-    <li *ngFor="let material of selectedPoint?.materials">{{ material }}</li>
-  </ul>
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>{{ selectedPoint?.name }}</h2>
+    <div class="modal-details">
+      <p><strong>Horario:</strong> {{ selectedPoint?.schedule }}</p>
+      <p><strong>Teléfono:</strong> {{ selectedPoint?.phone }}</p>
+      <p><strong>Materiales:</strong></p>
+      <ul>
+        <li *ngFor="let material of selectedPoint?.materials">{{ material }}</li>
+      </ul>
+      <p><strong>Ubicación:</strong></p>
+      <p>Latitud: {{ selectedPoint?.lat }}</p>
+      <p>Longitud: {{ selectedPoint?.lng }}</p>
+    </div>
+  </div>
 </div>
