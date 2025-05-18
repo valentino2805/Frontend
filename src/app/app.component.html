@@ -22,9 +22,9 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar [style.background-color]="'black'" color="primary" [ngClass]="{ 'sidenav-open-bar': isSidenavOpen, 'sidenav-closed-bar': !isSidenavOpen }">
+    <mat-toolbar [ngClass]="{ 'sidenav-open-bar': isSidenavOpen, 'sidenav-closed-bar': !isSidenavOpen }">
       <button mat-icon-button (click)="toggleSidenav()" >
-        <mat-icon *ngIf="sidenav.opened" style="color: white;">close</mat-icon>
+        <mat-icon *ngIf="sidenav.opened">close</mat-icon>
         <mat-icon *ngIf="!sidenav.opened" style="color: white;">apps</mat-icon>
       </button>
 
@@ -33,14 +33,22 @@
       </a>
 
       <span class="mat-spacer"></span>
-      <mat-icon class="notification-icon" style="color: white;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 538 520"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"/></svg>
-      </mat-icon>
-      <mat-icon class="user-icon" style="color: white;">account_circle</mat-icon>
+
+
+      <button *ngIf="showAuthButtons" mat-button color="accent" (click)="onSignIn()">
+        {{ 'auth.signIn' | translate }}
+      </button>
+      <button *ngIf="showAuthButtons" mat-button color="primary" (click)="onSignUp()">
+        {{ 'auth.signUp' | translate }}
+      </button>
+
+
+      <mat-icon *ngIf="showUserIcon" class="user-icon" style="color: white;">account_circle</mat-icon>
 
       <app-language-switcher style="color: white;"></app-language-switcher>
-
     </mat-toolbar>
+
+
     <div class="content">
       <router-outlet></router-outlet>
     </div>

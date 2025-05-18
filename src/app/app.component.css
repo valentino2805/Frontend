@@ -59,10 +59,11 @@ button[mat-icon-button] {
 }
 
 
-mat-toolbar {
-  background-color: white !important;
+mat-toolbar:not(.transparent-toolbar) {
+
   border-bottom: 2px solid #000;
 }
+
 
 mat-sidenav {
   width: 200px!important;
@@ -113,5 +114,24 @@ mat-list-item {
 .user-icon{
   cursor: pointer;
 }
+
+.transparent-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: white !important;
+}
+
+
+
+
+.content {
+  padding-top: 64px; /* espacio para el toolbar fijo */
+}
+
 
 
