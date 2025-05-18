@@ -1,7 +1,7 @@
 {
   "collectionPoints": [
     {
-      "id": 1,
+      "id": "1",
       "name": "San Isidro Recicla",
       "schedule": "10:00 - 16:00",
       "phone": "+51 1 61252812",
@@ -13,7 +13,7 @@
       "lng": -77.05
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Miraflores Eco",
       "schedule": "09:00 - 15:00",
       "phone": "+51 1 61727272",
@@ -25,7 +25,7 @@
       "lng": -77.03
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Recolecta Surco",
       "schedule": "08:00 - 14:00",
       "phone": "+51 1 6008080",
@@ -38,7 +38,7 @@
       "lng": -76.99
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Aceite Usado Punto Verde",
       "schedule": "11:00 - 17:00",
       "phone": "+51 1 5235555",
@@ -134,5 +134,78 @@
       "color": "#f4ed2c",
       "ubication": "aa"
     }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "Renzo Sebastian Uribe Livia",
+      "email": "renzo@gmail.com",
+      "password": "202311745",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "username": "Renzo Sebastian Uribe Livia",
+      "email": "renzo@gmail.com",
+      "password": "u202311745",
+      "role": "empresa"
+    },
+    {
+      "id": "3",
+      "username": "Fabian Alejandro Oliva Lopez",
+      "email": "fabian@gmail.com",
+      "password": "202312013",
+      "role": "admin"
+    },
+    {
+      "id": "4",
+      "username": "Fabian Alejandro Oliva Lopez",
+      "email": "fabian@gmail.com",
+      "password": "u202312013",
+      "role": "empresa"
+    },
+    {
+      "id": "5",
+      "username": "Marcia Victoria Melgarejo Gomez",
+      "email": "marcia@gmail.com",
+      "password": "20231c505",
+      "role": "admin"
+    },
+    {
+      "id": "6",
+      "username": "Marcia Victoria Melgarejo Gomez",
+      "email": "marcia@gmail.com",
+      "password": "u20231c505",
+      "role": "empresa"
+    },
+    {
+      "id": "7",
+      "username": "Gabriel Fernando Gordon Salas",
+      "email": "gabriel@gmail.com",
+      "password": "20221e229",
+      "role": "admin"
+    },
+    {
+      "id": "8",
+      "username": "Gabriel Fernando Gordon Salas",
+      "email": "gabriel@gmail.com",
+      "password": "u20221e229",
+      "role": "empresa"
+    },
+    {
+      "id": "9",
+      "username": "Valentino Sandoval Paiva",
+      "email": "valentino@gmail.com",
+      "password": "20211a962",
+      "role": "admin"
+    },
+    {
+      "id": "10",
+      "username": "Valentino Sandoval Paiva",
+      "email": "valentino@gmail.com",
+      "password": "u20211a962",
+      "role": "empresa"
+    }
+
   ]
 }

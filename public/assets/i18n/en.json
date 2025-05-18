@@ -88,6 +88,32 @@
     "all": "All",
     "searchPlaceholder": "Search sustainable actions",
     "delete": "Delete"
+  },
+  "login": {
+    "title": "Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot your password?",
+    "loginButton": "Log In",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Sign Up"
+  },
+  "register": {
+    "title": "Register",
+    "usernamePlaceholder": "Username",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "selectRole": "Select a role",
+    "roleEmpresa": "Company",
+    "roleAdmin": "Administrator",
+    "registerButton": "Register",
+    "alreadyHaveAccount": "Already have an account?",
+    "loginLink": "Log in"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
   }
 
 }
