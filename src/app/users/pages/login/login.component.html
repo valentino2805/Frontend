@@ -1,0 +1,47 @@
+<div class="login-container">
+  <form class="login-box" (ngSubmit)="onLogin()">
+    <h2 class="login-title">{{ 'login.title' | translate }}</h2>
+
+    <div class="input-group">
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        required
+        [placeholder]="'login.emailPlaceholder' | translate"
+      />
+    </div>
+
+    <div class="input-group">
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+        [placeholder]="'login.passwordPlaceholder' | translate"
+      />
+    </div>
+
+    <div class="options">
+      <label>
+        <input type="checkbox" /> {{ 'login.rememberMe' | translate }}
+      </label>
+      <a href="#" class="forgot-password">
+        {{ 'login.forgotPassword' | translate }}
+      </a>
+    </div>
+
+    <button type="submit" class="login-btn">
+      {{ 'login.loginButton' | translate }}
+    </button>
+
+    <p class="signup-text">
+      {{ 'login.noAccount' | translate }}
+      <a (click)="goToRegister()" class="signup-link" style="cursor:pointer;">
+        {{ 'login.registerLink' | translate }}
+      </a>
+    </p>
+
+    <div *ngIf="loginError" class="error-text">{{ loginError }}</div>
+  </form>
+</div>
