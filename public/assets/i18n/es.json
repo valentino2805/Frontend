@@ -38,7 +38,11 @@
     "unities" : "Unidades",
     "type-Sensor": "Tipo de Sensor",
     "status" : "Estado",
-    "add-sensor" : "Agregar Sensor"
+    "add-sensor" : "Agregar Sensor",
+    "info-sensor": "Lista de Sensores",
+    "delete-sensor": "Borrar Sensor",
+    "num-sensor": "Número de Sensor",
+    "percentage": "Porcentage"
   },
 
 
