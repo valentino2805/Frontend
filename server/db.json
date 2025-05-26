@@ -52,87 +52,137 @@
   "zones": [
     {
       "id": "c80af617-c5ab-40b9-b7a2-06eeb08cc90a",
-      "name": "z",
-      "numberStore": 1,
-      "amountSensor": 0,
-      "percent": "0",
-      "sensor": [
-        {
-          "id": "8b20b472-5e7e-4bd7-a986-349629b3e533",
-          "numberSensor": 2,
-          "wasteDetected": [],
-          "typeSensor": "Plástico",
-          "sensorUbication": "",
-          "status": "",
-          "batteryLevel": 0,
-          "lastReadingDate": "",
-          "unities": 19
-        },
-        {
-          "id": "asa",
-          "numberSensor": 3,
-          "wasteDetected": [],
-          "typeSensor": "Plástico",
-          "sensorUbication": "",
-          "status": "",
-          "batteryLevel": 0,
-          "lastReadingDate": "",
-          "unities": 7
-        },
-        {
-          "id": "3c43853d-2f59-47bf-bbf0-7d661d5968c5",
-          "numberSensor": 4,
-          "wasteDetected": [],
-          "typeSensor": "Plástico",
-          "sensorUbication": "",
-          "status": "",
-          "batteryLevel": 0,
-          "lastReadingDate": "",
-          "unities": "",
-          "capacidad": 14,
-          "nivelActual": "as",
-          "porcentaje": "50%",
-          "recojo": "Si"
-        }
+      "sensorIds": [
+        "8b20b472-5e7e-4bd7-a986-349629b3e533",
+        "1f2a7c85-3e61-4a3a-b5e6-dfa2123e5f4e",
+        "3c43853d-2f59-47bf-bbf0-7d661d5968c5"
       ],
-      "color": "#eb88cb",
-      "ubication": "zzz"
+      "name": "Z",
+      "numberStore": 1,
+      "amountSensor": 3,
+      "fillPercent": "32%",
+      "color": "#ff0000",
+      "ubication": "Southern coastal zone"
     },
     {
       "id": "e05d2a2f-8164-4284-b7a1-0d4b399d17ef",
-      "name": "za",
+      "sensorIds": [],
+      "name": "Z1",
       "numberStore": 2,
       "amountSensor": 0,
-      "percent": "0",
-      "sensor": [],
+      "fillPercent": "0%",
       "color": "#4184bc",
-      "ubication": "aaaa"
+      "ubication": "Central urban zone"
     },
     {
       "id": "6b275d34-4c3d-46b3-a82e-002680865123",
-      "name": "Z",
-      "numberStore": 3,
-      "amountSensor": 0,
-      "percent": "0",
-      "sensor": [
-        {
-          "id": "768f594c-dea2-4271-b80d-a18ce0a2e6a6",
-          "numberSensor": 1,
-          "wasteDetected": [],
-          "typeSensor": "Orgánico",
-          "sensorUbication": "",
-          "status": "",
-          "batteryLevel": 0,
-          "lastReadingDate": "",
-          "unities": "",
-          "capacidad": 18,
-          "nivelActual": "z",
-          "porcentaje": "12%",
-          "recojo": "x"
-        }
+      "sensorIds": [
+        "768f594c-dea2-4271-b80d-a18ce0a2e6a6"
       ],
-      "color": "#f4ed2c",
-      "ubication": "aa"
+      "name": "Z2",
+      "numberStore": 3,
+      "amountSensor": 1,
+      "fillPercent": "12%",
+      "color": "#0000ff",
+      "ubication": "Northern rural zone"
+    },
+    {
+      "id": "35462a5e-d17a-478c-84f4-0f0023413a07",
+      "sensorIds": [],
+      "name": "a",
+      "numberStore": 1,
+      "amountSensor": 0,
+      "fillPercent": "0",
+      "color": "#f6d2e2",
+      "ubication": "a"
+    }
+  ],
+  "sensors": [
+    {
+      "id": "8b20b472-5e7e-4bd7-a986-349629b3e533",
+      "sensorNumber": 2,
+      "wasteIds": [
+        "a16b2bb0-3f70-4e6f-87b4-fcc58e6f7797"
+      ],
+      "location": "Southern coastal zone",
+      "status": "active",
+      "batteryLevel": 92,
+      "lastReading": "2025-05-23",
+      "typeSensor": "Plastic",
+      "units": "19",
+      "capacity": "50",
+      "currentLevel": "16",
+      "percentage": "50%",
+      "collection": "No"
+    },
+    {
+      "id": "1f2a7c85-3e61-4a3a-b5e6-dfa2123e5f4e",
+      "sensorNumber": 3,
+      "wasteIds": [
+        "a16b2bb0-3f70-4e6f-87b4-fcc58e6f7797",
+        "cc3e6c72-5e0e-4d76-b7a5-d4fc7bde85c3"
+      ],
+      "location": "Southern coastal zone",
+      "status": "active",
+      "batteryLevel": 88,
+      "lastReading": "2025-05-23",
+      "typeSensor": "Plastic",
+      "units": "7",
+      "capacity": "50",
+      "currentLevel": "7",
+      "percentage": "76%",
+      "collection": "No"
+    },
+    {
+      "id": "3c43853d-2f59-47bf-bbf0-7d661d5968c5",
+      "sensorNumber": 4,
+      "wasteIds": [
+        "cc3e6c72-5e0e-4d76-b7a5-d4fc7bde85c3"
+      ],
+      "location": "Southern coastal zone",
+      "status": "active",
+      "batteryLevel": 78,
+      "lastReading": "2025-05-23",
+      "typeSensor": "Plastic",
+      "units": "14",
+      "capacity": "28",
+      "currentLevel": "14",
+      "percentage": "46%",
+      "collection": "Yes"
+    },
+    {
+      "id": "768f594c-dea2-4271-b80d-a18ce0a2e6a6",
+      "sensorNumber": 1,
+      "wasteIds": [
+        "ef9258bd-748b-4036-a51e-5a55a3c46d25"
+      ],
+      "location": "Northern rural zone",
+      "status": "active",
+      "batteryLevel": 85,
+      "lastReading": "2025-05-23",
+      "typeSensor": "Organic",
+      "units": "2",
+      "capacity": "18",
+      "currentLevel": "2",
+      "percentage": "39%",
+      "collection": "No"
+    }
+  ],
+  "wastes": [
+    {
+      "id": "a16b2bb0-3f70-4e6f-87b4-fcc58e6f7797",
+      "wasteType": "Plastic",
+      "amount": 25
+    },
+    {
+      "id": "cc3e6c72-5e0e-4d76-b7a5-d4fc7bde85c3",
+      "wasteType": "Paper",
+      "amount": 13
+    },
+    {
+      "id": "ef9258bd-748b-4036-a51e-5a55a3c46d25",
+      "wasteType": "Organic",
+      "amount": 7
     }
   ],
   "users": [
@@ -206,6 +256,5 @@
       "password": "u20211a962",
       "role": "empresa"
     }
-
   ]
 }
