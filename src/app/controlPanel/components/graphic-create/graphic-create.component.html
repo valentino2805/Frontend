@@ -1,0 +1,46 @@
+<div class="waste-management-container">
+  <div class="graphic-container">
+    <div class="header">
+      <h4>{{ "controlPanel.title" | translate }}</h4>
+      <div class="search-times">
+        <span>{{ "controlPanel.filter-by" | translate }}</span>
+        <mat-select [(ngModel)]="selectedType"  class="search-places-select">
+          @for (type of types; track type) {
+            <mat-option [value]="type.value">{{ "controlPanel." + type.viewValue | translate }}</mat-option>
+          }
+        </mat-select>
+        <mat-select [(ngModel)]="selectedTime" class="search-times-select">
+          @for (time of times; track time) {
+            <mat-option [value]="time.value">{{ "controlPanel." + time.viewValue | translate }}</mat-option>
+          }
+        </mat-select>
+      </div>
+    </div>
+    <canvas class="canva" #wasteChart></canvas>
+  </div>
+  <mat-card class="alerts-container">
+    <mat-card-header>
+      <mat-card-title>{{ "controlPanel.alerts" | translate }}</mat-card-title>
+      <p>{{ "controlPanel.warn" | translate }}</p>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="store-content">
+        <div id="sphereContainer" class="store-content-item " *ngFor="let store of storesAuxSh">
+          <span class="sphere-decing" [style.background-color]="store.color" ></span>
+          <span class="store-name">{{store.name}}</span>
+          <div class="store-wastes">
+            <ul class="store-wastes-list">
+              <li class="store-wastes-list-type" *ngFor="let sensor of sensorsAuxSh">
+                <ng-container *ngIf="store.sensorIds.includes(sensor.id)">
+                  <span class="sensor-header">
+                    Sensor #{{ sensor.sensorNumber }} - Fill: {{ sensor.percentage }}
+                  </span>
+                </ng-container>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

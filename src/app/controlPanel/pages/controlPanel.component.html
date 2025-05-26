@@ -1,0 +1,31 @@
+<div class=" controlPanelBox w-full flex flex-col items-center justify-center min-h-screen bg-white">
+  <app-graphic-create></app-graphic-create>
+  <div class="zones-container">
+    <app-zone-create></app-zone-create>
+    <div class = "zones-list-container" id="zoneTableBody">
+      <div class="zones-list-container-header ">
+        <ul>
+          <li>{{ "controlPanel.zone" | translate }}</li>
+          <li>{{ "controlPanel.ubication" | translate }}</li>
+          <li>{{ "controlPanel.sensor" | translate }}</li>
+          <li>{{ "controlPanel.action" | translate }}</li>
+        </ul>
+      </div>
+      <div class="zone-item-new" *ngFor="let store of storesSource">
+        <ul>
+          <li class="zon-name">{{ store.name }}</li>
+          <li class="zon-ubi">{{ store.ubication }}</li>
+          <li class="zon-sensor-num">{{ store.amountSensor }}</li>
+          <li class="zon-button">
+            <button type="button" class="zon-button-lock" role="button" (click)="showInfoSensor(store.name)">{{ "controlPanel.see" | translate }}</button>
+            <button type="button" class="zon-button-add" role="button" (click)="addNewSensor(store.name)">{{ "controlPanel.add" | translate }}</button>
+            <button type="button" class="zon-button-delete" role="button" (click)="deleteSensor(store.name)">{{ "controlPanel.delete" | translate }}</button>
+          </li>
+        </ul>
+      </div>
+      <app-sensor-create-and-edit></app-sensor-create-and-edit>
+      <app-sensor-show-info></app-sensor-show-info>
+      <app-sensor-delete></app-sensor-delete>
+    </div>
+  </div>
+</div>

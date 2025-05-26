@@ -1,0 +1,22 @@
+<div #formDeleteSensor class="delete-sensor-form-container return-to-hide ">
+  <form class="delete-sensor-form">
+    <h4>{{ "controlPanel.delete-sensor" | translate }}</h4> <br>
+    <div  class="sensor-list-item-container" >
+      <ul *ngFor="let sensor of sensorAux"  class="sensor-list-item" >
+        <h6> <strong> {{ 'controlPanel.num-sensor' | translate}}:</strong> {{sensor.sensorNumber}}</h6>
+        <li> {{ 'controlPanel.ubication' | translate }}: {{sensor.location}} </li>
+        <li> {{ 'controlPanel.status' | translate }}: {{sensor.status}} </li>
+        <li> {{ 'controlPanel.percentage' | translate }}: {{sensor.percentage}} </li>
+      </ul>
+    </div>
+    <mat-icon (click)="cancelDeleteSensor()">close</mat-icon>
+    <h6>Choose a Sensor</h6>
+    <div class="form-group">
+      <label for="num-sensor">{{ "controlPanel.num-sensor" | translate }}</label>
+      <input id="num-sensor" type="text" class="num-sensor">
+    </div>
+    <br>
+    <button type="button" class="delete-sensor-button" role="button" (click)="deleteSensor()">{{ "controlPanel.register" | translate }}</button>
+    <br>
+  </form>
+</div>

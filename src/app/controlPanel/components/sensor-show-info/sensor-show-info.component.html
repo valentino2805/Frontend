@@ -1,0 +1,17 @@
+<div #listTableSensors  class="sensor-list-container return-to-hide ">
+  <div class="listTable">
+    <h4>{{ "controlPanel.info-sensor" | translate }}</h4> <br>
+    <mat-icon (click)="cancelInfoSensor()">close</mat-icon>
+    <div  class="sensor-list-item-container" >
+      <ul *ngFor="let sensor of sensorsAux"  class="sensor-list-item">
+        <h6> <strong>Number Sensor:</strong> {{sensor.sensorNumber}}</h6>
+        <li> Unities: {{sensor.units}} </li>
+        <li> Battery: {{sensor.batteryLevel}} </li>
+        <li> Capacity: {{sensor.capacity}} </li>
+        <li> Ubication: {{sensor.location}} </li>
+        <li> Status: {{sensor.status}} </li>
+        <li> Type: {{sensor.typeSensor}} </li>
+      </ul>
+    </div>
+  </div>
+</div>
