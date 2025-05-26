@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
-import { ZoneService } from '../../../shared/services/zone.service';
-import { Store } from '../../../controlPanel/model/Store.entity';
+import { Store } from '../../../controlPanel/model/store.entity';
 import {TranslateModule} from "@ngx-translate/core";
+import {GraphicService} from "../../../controlPanel/services/graphic.service";
+import {Sensor} from "../../../controlPanel/model/sensor.entity";
+import {Waste} from "../../../controlPanel/model/waste.entity";
+import {ZoneApiService} from "../../../controlPanel/services/zone-api.service";
+import {SensorApiService} from "../../../controlPanel/services/sensor-api.service";
+import {WasteApiService} from "../../../controlPanel/services/waste-api.service";
 
 interface ReportRow {
   zona: string;
@@ -26,6 +31,20 @@ interface ReportRow {
   imports: [FormsModule, CommonModule, TranslateModule]
 })
 export class ReportsComponent implements OnInit {
+
+  protected storeData !: Store;
+  protected sensorData !: Sensor;
+  protected waste !: Waste;
+
+  protected storesSource: Store[] = [];
+  protected sensorsSource: Sensor[] = [];
+  protected wastesSource: Waste[] = [];
+
+  private storeService = inject(ZoneApiService);
+  private sensorService = inject(SensorApiService);
+  private wasteService = inject(WasteApiService);
+
+
   idioma: 'es' | 'en' = 'es';
 
   textos = {
@@ -73,27 +92,38 @@ export class ReportsComponent implements OnInit {
 
   rows: ReportRow[] = [];
 
-  constructor(private zoneService: ZoneService) {}
+  constructor() {
+    this.storeData = new Store({})
+    this.sensorData = new Sensor({})
+    this.waste = new Waste({})
+  }
 
   ngOnInit() {
-    this.zoneService.getAll().subscribe((zones: Store[]) => {
+    this.storeService.getAll().subscribe((zones: Store[]) => {
       this.rows = [];
       zones.forEach(zone => {
-        if (zone.sensor && zone.sensor.length > 0) {
-          zone.sensor.forEach(sensor => {
+        if (zone.sensorIds && zone.sensorIds.length > 0) {
+          zone.sensorIds.forEach(sensor => {
             // Si hay varios tipos de residuo por sensor, puedes adaptar esto
-            this.rows.push({
-              zona: zone.name,
-              tipo: sensor.typeSensor || '-',
-              kg: (sensor.nivelActual ? sensor.nivelActual + ' kg' : '-'),
-              fecha: sensor.lastReadingDate || sensor.recojo || '-',
-              mes: this.getMes(sensor.lastReadingDate || sensor.recojo),
-              anio: this.getAnio(sensor.lastReadingDate || sensor.recojo)
-            });
+            this.sensorsSource.forEach(sensorAux => {
+              if (sensorAux.id === sensor){
+                this.rows.push({
+                  zona: zone.name,
+                  tipo: sensorAux.typeSensor || '-',
+                  kg: (sensorAux.currentLevel ? sensorAux.currentLevel + ' kg' : '-'),
+                  fecha: sensorAux.lastReadingDate || '-',
+                  mes: this.getMes(sensorAux.lastReadingDate ),
+                  anio: this.getAnio(sensorAux.lastReadingDate)
+                });
+              }
+            })
           });
         }
       });
     });
+
+    this.getAllSensors();
+    this.getAllWastes();
   }
 
   getMes(fecha: string): string {
@@ -155,5 +185,27 @@ export class ReportsComponent implements OnInit {
     const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const data: Blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
     saveAs(data, 'reporte.xlsx');
+  }
+
+
+
+
+  // Get all from api
+  private getAllStores() {
+    this.storeService.getAll().subscribe((stores: Array<Store>) => {
+      this.storesSource = stores;
+    });
+  }
+
+  private getAllSensors() {
+    this.sensorService.getAll().subscribe((sensors: Array<Sensor>) => {
+      this.sensorsSource = sensors;
+    });
+  }
+
+  private getAllWastes() {
+    this.wasteService.getAll().subscribe((wastes: Array<Waste>) => {
+      this.wastesSource = wastes;
+    });
   }
 }
