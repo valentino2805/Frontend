@@ -1,7 +1,7 @@
 {
   "collectionPoints": [
     {
-      "id": 1,
+      "id": "1",
       "name": "San Isidro Recicla",
       "schedule": "10:00 - 16:00",
       "phone": "+51 1 61252812",
@@ -13,7 +13,7 @@
       "lng": -77.05
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Miraflores Eco",
       "schedule": "09:00 - 15:00",
       "phone": "+51 1 61727272",
@@ -25,7 +25,7 @@
       "lng": -77.03
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Recolecta Surco",
       "schedule": "08:00 - 14:00",
       "phone": "+51 1 6008080",
@@ -38,7 +38,7 @@
       "lng": -76.99
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Aceite Usado Punto Verde",
       "schedule": "11:00 - 17:00",
       "phone": "+51 1 5235555",
@@ -47,6 +47,214 @@
       ],
       "lat": -12.11,
       "lng": -77.04
+    }
+  ],
+  "zones": [
+    {
+      "id": "c80af617-c5ab-40b9-b7a2-06eeb08cc90a",
+      "sensorIds": [
+        "8b20b472-5e7e-4bd7-a986-349629b3e533",
+        "1f2a7c85-3e61-4a3a-b5e6-dfa2123e5f4e",
+        "3c43853d-2f59-47bf-bbf0-7d661d5968c5"
+      ],
+      "name": "Z",
+      "numberStore": 1,
+      "amountSensor": 3,
+      "fillPercent": "32%",
+      "color": "#ff0000",
+      "ubication": "Southern coastal zone"
+    },
+    {
+      "id": "e05d2a2f-8164-4284-b7a1-0d4b399d17ef",
+      "sensorIds": [],
+      "name": "Z1",
+      "numberStore": 2,
+      "amountSensor": 0,
+      "fillPercent": "0%",
+      "color": "#4184bc",
+      "ubication": "Central urban zone"
+    },
+    {
+      "id": "6b275d34-4c3d-46b3-a82e-002680865123",
+      "sensorIds": [
+        "768f594c-dea2-4271-b80d-a18ce0a2e6a6"
+      ],
+      "name": "Z2",
+      "numberStore": 3,
+      "amountSensor": 1,
+      "fillPercent": "12%",
+      "color": "#0000ff",
+      "ubication": "Northern rural zone"
+    },
+    {
+      "id": "35462a5e-d17a-478c-84f4-0f0023413a07",
+      "sensorIds": [],
+      "name": "a",
+      "numberStore": 1,
+      "amountSensor": 0,
+      "fillPercent": "0",
+      "color": "#f6d2e2",
+      "ubication": "a"
+    }
+  ],
+  "sensors": [
+    {
+      "id": "8b20b472-5e7e-4bd7-a986-349629b3e533",
+      "sensorNumber": 2,
+      "wasteIds": [
+        "a16b2bb0-3f70-4e6f-87b4-fcc58e6f7797"
+      ],
+      "location": "Southern coastal zone",
+      "status": "active",
+      "batteryLevel": 92,
+      "lastReading": "2025-05-23",
+      "typeSensor": "Plastic",
+      "units": "19",
+      "capacity": "50",
+      "currentLevel": "16",
+      "percentage": "50%",
+      "collection": "No"
+    },
+    {
+      "id": "1f2a7c85-3e61-4a3a-b5e6-dfa2123e5f4e",
+      "sensorNumber": 3,
+      "wasteIds": [
+        "a16b2bb0-3f70-4e6f-87b4-fcc58e6f7797",
+        "cc3e6c72-5e0e-4d76-b7a5-d4fc7bde85c3"
+      ],
+      "location": "Southern coastal zone",
+      "status": "active",
+      "batteryLevel": 88,
+      "lastReading": "2025-05-23",
+      "typeSensor": "Plastic",
+      "units": "7",
+      "capacity": "50",
+      "currentLevel": "7",
+      "percentage": "76%",
+      "collection": "No"
+    },
+    {
+      "id": "3c43853d-2f59-47bf-bbf0-7d661d5968c5",
+      "sensorNumber": 4,
+      "wasteIds": [
+        "cc3e6c72-5e0e-4d76-b7a5-d4fc7bde85c3"
+      ],
+      "location": "Southern coastal zone",
+      "status": "active",
+      "batteryLevel": 78,
+      "lastReading": "2025-05-23",
+      "typeSensor": "Plastic",
+      "units": "14",
+      "capacity": "28",
+      "currentLevel": "14",
+      "percentage": "46%",
+      "collection": "Yes"
+    },
+    {
+      "id": "768f594c-dea2-4271-b80d-a18ce0a2e6a6",
+      "sensorNumber": 1,
+      "wasteIds": [
+        "ef9258bd-748b-4036-a51e-5a55a3c46d25"
+      ],
+      "location": "Northern rural zone",
+      "status": "active",
+      "batteryLevel": 85,
+      "lastReading": "2025-05-23",
+      "typeSensor": "Organic",
+      "units": "2",
+      "capacity": "18",
+      "currentLevel": "2",
+      "percentage": "39%",
+      "collection": "No"
+    }
+  ],
+  "wastes": [
+    {
+      "id": "a16b2bb0-3f70-4e6f-87b4-fcc58e6f7797",
+      "wasteType": "Plastic",
+      "amount": 25
+    },
+    {
+      "id": "cc3e6c72-5e0e-4d76-b7a5-d4fc7bde85c3",
+      "wasteType": "Paper",
+      "amount": 13
+    },
+    {
+      "id": "ef9258bd-748b-4036-a51e-5a55a3c46d25",
+      "wasteType": "Organic",
+      "amount": 7
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "Renzo Sebastian Uribe Livia",
+      "email": "renzo@gmail.com",
+      "password": "202311745",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "username": "Renzo Sebastian Uribe Livia",
+      "email": "renzo@gmail.com",
+      "password": "u202311745",
+      "role": "empresa"
+    },
+    {
+      "id": "3",
+      "username": "Fabian Alejandro Oliva Lopez",
+      "email": "fabian@gmail.com",
+      "password": "202312013",
+      "role": "admin"
+    },
+    {
+      "id": "4",
+      "username": "Fabian Alejandro Oliva Lopez",
+      "email": "fabian@gmail.com",
+      "password": "u202312013",
+      "role": "empresa"
+    },
+    {
+      "id": "5",
+      "username": "Marcia Victoria Melgarejo Gomez",
+      "email": "marcia@gmail.com",
+      "password": "20231c505",
+      "role": "admin"
+    },
+    {
+      "id": "6",
+      "username": "Marcia Victoria Melgarejo Gomez",
+      "email": "marcia@gmail.com",
+      "password": "u20231c505",
+      "role": "empresa"
+    },
+    {
+      "id": "7",
+      "username": "Gabriel Fernando Gordon Salas",
+      "email": "gabriel@gmail.com",
+      "password": "20221e229",
+      "role": "admin"
+    },
+    {
+      "id": "8",
+      "username": "Gabriel Fernando Gordon Salas",
+      "email": "gabriel@gmail.com",
+      "password": "u20221e229",
+      "role": "empresa"
+    },
+    {
+      "id": "9",
+      "username": "Valentino Sandoval Paiva",
+      "email": "valentino@gmail.com",
+      "password": "20211a962",
+      "role": "admin"
+    },
+    {
+      "id": "10",
+      "username": "Valentino Sandoval Paiva",
+      "email": "valentino@gmail.com",
+      "password": "u20211a962",
+      "role": "empresa"
     }
   ]
 }

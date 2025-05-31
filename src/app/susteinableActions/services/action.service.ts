@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
 import {Action} from "../model/action.entity";
+import {BaseService} from "../../shared/services/base.service";
+import {environment} from '../../../environments/environment';
+
+const actionResourceEndpointPath = environment.actionEndPointPath;
 
 @Injectable({
   providedIn: 'root'
 })
-export class ActionService {
-  private apiUrl = 'http://localhost:3000/actions';
+export class ActionService extends BaseService<Action>{
 
-  constructor(private http: HttpClient) {}
-
-  getAll(): Observable<Action[]> {
-    return this.http.get<Action[]>(this.apiUrl);
-  }
-
-  addAction(newAction: Action): Observable<Action> {
-    return this.http.post<Action>(this.apiUrl, newAction);
+  constructor() {
+    super();
+    this.resourceEndPoint = actionResourceEndpointPath;
   }
 }

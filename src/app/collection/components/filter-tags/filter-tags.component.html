@@ -1,7 +1,7 @@
 <div class="filter-select">
-  <label for="filter">Filtrar por:</label>
+  <label for="filter">{{ 'filterBy' | translate }}:</label>
   <select id="filter" (change)="onFilterChange($event)">
-    <option value="residuo">Residuo</option>
-    <option value="distrito">Distrito</option>
+    <option value="residuo">{{ 'residue' | translate }}</option>
+    <option value="distrito">{{ 'district' | translate }}</option>
   </select>
 </div>

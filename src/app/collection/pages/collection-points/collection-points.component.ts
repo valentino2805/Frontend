@@ -8,7 +8,7 @@ import { CollectionPointsService } from '../../services/collection-points.servic
 import { AddCollectionPointModalComponent } from '../../components/add-collection-point/add-collection-point.component';
 import * as L from 'leaflet';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-collection-points',
@@ -20,9 +20,9 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     CollectionCardComponent,
     SearchBarComponent,
     FilterTagsComponent,
-    MatDialogModule  // <-- AÑADIDO AQUÍ
+    MatDialogModule,
+    TranslateModule
   ]
-
 })
 export class CollectionPointsPage implements OnInit {
   points: CollectionPoint[] = [];
@@ -35,117 +35,106 @@ export class CollectionPointsPage implements OnInit {
 
   constructor(
     private service: CollectionPointsService,
-    private dialog: MatDialog  // <-- AÑADIDO AQUÍ
+    private dialog: MatDialog
   ) {}
 
+  ngOnInit() {
+    this.loadPoints();
+    this.initMap();
+  }
 
-  ngOnInit(): void {
-    this.service.getAll().subscribe(data => {
-      this.points = data;
-      this.filteredPoints = data;
-      this.initMap();
-      this.updateMapMarkers();
+  loadPoints() {
+    this.service.getAll().subscribe({
+      next: (points) => {
+        this.points = points;
+        this.filteredPoints = points;
+        this.updateMapMarkers();
+      },
+      error: (error) => {
+        console.error('Error al cargar los puntos:', error);
+      }
     });
   }
 
-  onSearch(term: string): void {
+  onSearch(term: string) {
     this.searchTerm = term;
     this.applyFilters();
   }
 
-  onFilter(type: string): void {
-    this.currentFilter = type;
+  onFilter(filter: string) {
+    this.currentFilter = filter;
     this.applyFilters();
   }
 
-  applyFilters(): void {
+  applyFilters() {
     this.filteredPoints = this.points.filter(point => {
-      const matchesSearch = point.name.toLowerCase().includes(this.searchTerm.toLowerCase());
-      let matchesFilter = true;
-
-      if (this.currentFilter === 'residuo') {
-        matchesFilter = point.materials.length > 0;
-      } else if (this.currentFilter === 'distrito') {
-        matchesFilter = true;
-      }
-
+      const matchesSearch = point.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+                          point.materials.some(material => material.toLowerCase().includes(this.searchTerm.toLowerCase()));
+      const matchesFilter = !this.currentFilter || point.materials.includes(this.currentFilter);
       return matchesSearch && matchesFilter;
     });
-
     this.updateMapMarkers();
   }
 
-  initMap(): void {
-    this.map = L.map('map', {
-      center: [-12.0464, -77.0428],
-      zoom: 12
-    });
-
+  initMap() {
+    this.map = L.map('map').setView([-12.0464, -77.0428], 12);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(this.map);
-
     this.markerGroup = L.layerGroup().addTo(this.map);
   }
 
-  updateMapMarkers(): void {
+  updateMapMarkers() {
     this.markerGroup.clearLayers();
-
-    if (this.filteredPoints.length === 0) return;
-
     this.filteredPoints.forEach(point => {
       const marker = L.marker([point.lat, point.lng])
-        .bindPopup(`<strong>${point.name}</strong><br/>${point.schedule}`);
+        .bindPopup(`
+          <strong>${point.name}</strong><br>
+          ${point.schedule}<br>
+          ${point.phone}<br>
+          Materiales: ${point.materials.join(', ')}
+        `);
       this.markerGroup.addLayer(marker);
     });
-
-    const bounds = L.latLngBounds(this.filteredPoints.map(p => [p.lat, p.lng]));
-    this.map.fitBounds(bounds, { padding: [50, 50] });
   }
 
-  // Función para abrir el modal y obtener el nuevo punto de acopio
   openAddPointModal(): void {
     const dialogRef = this.dialog.open(AddCollectionPointModalComponent);
 
-    // Cuando el modal se cierra, obtenemos los datos
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // Si el modal devolvió un resultado, agregamos el punto
         const newPoint: CollectionPoint = {
-          id: this.generateId(),  // Genera un ID único
+          id: this.generateId(),
           name: result.name,
           schedule: result.schedule,
-          phone: result.phone || '',  // Si no se completó, dejamos vacío
-          materials: result.materials,  // Usamos el valor tal cual (ya es un array)
+          phone: result.phone || '',
+          materials: result.materials,
           lat: parseFloat(result.lat),
           lng: parseFloat(result.lng),
         };
 
-        // Añadimos el nuevo punto al servicio
-        this.service.addCollectionPoint(newPoint).subscribe(() => {
-          // Actualizamos el array de puntos, pero solo agregamos si no existe ya
-          if (!this.points.some(point => point.id === newPoint.id)) {
+        this.service.addCollectionPoint(newPoint).subscribe({
+          next: () => {
             this.points.push(newPoint);
-          }
-          // Actualizamos filteredPoints con el mismo nuevo punto
-          if (!this.filteredPoints.some(point => point.id === newPoint.id)) {
             this.filteredPoints.push(newPoint);
+            this.updateMapMarkers();
+          },
+          error: (error) => {
+            console.error('Error al agregar el punto:', error);
+            alert('Hubo un error al agregar el punto de recolección');
           }
-
-          // Actualizamos los marcadores en el mapa
-          this.updateMapMarkers();
         });
       }
     });
   }
 
-
-
-
-  // Función para generar un ID único (esto es solo un ejemplo)
-  generateId(): number {
-    return Math.floor(Math.random() * 1000000);  // Genera un id aleatorio
+  onPointDeleted(id: number) {
+    this.points = this.points.filter(point => point.id !== id);
+    this.filteredPoints = this.filteredPoints.filter(point => point.id !== id);
+    this.updateMapMarkers();
   }
 
-
+  private generateId(): number {
+    return Math.max(0, ...this.points.map(p => p.id)) + 1;
+  }
 }

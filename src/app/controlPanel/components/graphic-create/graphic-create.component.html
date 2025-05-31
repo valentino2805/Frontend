@@ -16,7 +16,7 @@
         </mat-select>
       </div>
     </div>
-    <canvas  class="canva" #wasteChart></canvas>
+    <canvas class="canva" #wasteChart></canvas>
   </div>
   <mat-card class="alerts-container">
     <mat-card-header>
@@ -25,16 +25,17 @@
     </mat-card-header>
     <mat-card-content>
       <div class="store-content">
-        <div id="sphereContainer" class="store-content-item " *ngFor="let store of stores">
+        <div id="sphereContainer" class="store-content-item " *ngFor="let store of storesAuxSh">
           <span class="sphere-decing" [style.background-color]="store.color" ></span>
           <span class="store-name">{{store.name}}</span>
           <div class="store-wastes">
             <ul class="store-wastes-list">
-              <li class="store-wastes-list-type" *ngFor="let sensor of store.sensor">
-                <span class ="wastes-sensor" *ngFor="let waste of sensor.wasteDetected ">
-                  {{waste.typeWaste}}
-                  {{waste.amount}} %
-                </span>
+              <li class="store-wastes-list-type" *ngFor="let sensor of sensorsAuxSh">
+                <ng-container *ngIf="store.sensorIds.includes(sensor.id)">
+                  <span class="sensor-header">
+                    Sensor #{{ sensor.sensorNumber }} - Fill: {{ sensor.percentage }}
+                  </span>
+                </ng-container>
               </li>
             </ul>
           </div>

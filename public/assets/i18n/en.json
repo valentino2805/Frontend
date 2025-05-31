@@ -1,9 +1,7 @@
 {
-
   "welcomeTitle": "Welcome to CleanView",
-  "subtitle": "From ------",
+  "subtitle": "Kord Industries",
   "getStarted": "Get Started",
-
 
   "homeTitle": "Home",
   "controlPanelTitle": "Control Panel",
@@ -11,6 +9,7 @@
   "sustainableActionsTitle": "Sustainable Actions",
   "collectionPointsTitle": "Collection Points",
   "reportsTitle": "Reports",
+  "addCollectionPoint": "Add Collection Point",
 
   "controlPanel": {
     "title" : "View the current level of waste",
@@ -33,14 +32,51 @@
     "annual": "Annual",
     "name": "Name",
     "register" : "Register",
-    "cancel" : "cancel",
+    "cancel" : "Cancel",
     "max-capacity": "Max Capacity (kg)",
     "id-sensor": "Sensor´s ID",
     "unities" : "Unities",
     "type-Sensor": "Type Sensor",
     "status" : "Status",
-    "add-sensor" : "Add Sensor"
+    "add-sensor" : "Add Sensor",
+    "info-sensor": "Sensor List",
+    "delete-sensor": "Delete Sensor",
+    "num-sensor": "Sensor Number",
+    "percentage": "Percentage"
   },
+
+
+  "newPointTitle": "New Collection Point",
+  "nameLabel": "Name",
+  "scheduleLabel": "Schedule",
+  "phoneLabel": "Phone",
+  "materialsLabel": "Materials (separated by comma)",
+  "latitudeLabel": "Latitude",
+  "longitudeLabel": "Longitude",
+  "cancelButton": "Cancel",
+  "saveButton": "Save",
+
+  "seeMore": "See More",
+  "delete": "Delete",
+
+
+  "locationLabel": "Location",
+
+  "filterBy": "Filter by",
+  "residue": "Residue",
+  "district": "District",
+
+  "searchPlaceholder": "Search",
+
+  "exportPDF": "Export PDF",
+  "exportExcel": "Export Excel",
+  "month": "Month",
+  "year": "Year",
+  "history": "History",
+  "zone": "Zone",
+  "type": "Type",
+  "kg": "Kg",
+  "date": "Date",
 
   "sustainableActions": {
     "title": "Reducing environmental impact is also a smart business strategy.",
@@ -56,7 +92,32 @@
     "all": "All",
     "searchPlaceholder": "Search sustainable actions",
     "delete": "Delete"
+  },
+  "login": {
+    "title": "Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot your password?",
+    "loginButton": "Log In",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Sign Up"
+  },
+  "register": {
+    "title": "Register",
+    "usernamePlaceholder": "Username",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "selectRole": "Select a role",
+    "roleEmpresa": "Company",
+    "roleAdmin": "Administrator",
+    "registerButton": "Register",
+    "alreadyHaveAccount": "Already have an account?",
+    "loginLink": "Log in"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
   }
-
 
 }

@@ -1,16 +1,16 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import {MatIcon} from "@angular/material/icon";
 import {GraphicCreateComponent} from "../graphic-create/graphic-create.component";
-import {Store} from "../../model/Store.entity";
-import {ZoneCreateComponent} from "../zone-create/zone-create.component";
-import {ControlPanelComponent} from "../../pages/controlPanel.component";
+import {Store} from "../../model/store.entity";
 import { v4 as uuidv4 } from 'uuid';
-import {Waste} from "../../model/Waste.entity";
-import {Sensor} from "../../model/Sensor.entity";
-import {StoreService} from "../../../shared/services/store.service";
-import {GraphicService} from "../../../shared/services/graphic.service";
+import {Waste} from "../../model/waste.entity";
+import {Sensor} from "../../model/sensor.entity";
+import {GraphicService} from "../../services/graphic.service";
+import {ZoneApiService} from "../../services/zone-api.service";
+import {SensorApiService} from "../../services/sensor-api.service";
+import {WasteApiService} from "../../services/waste-api.service";
 
 @Component({
   selector: 'app-sensor-create-and-edit',
@@ -25,26 +25,43 @@ import {GraphicService} from "../../../shared/services/graphic.service";
 
 export class SensorCreateAndEditComponent implements OnInit{
 
-  currentStore: Store | null = null;
+  protected storeData !: Store;
+  protected sensorData !: Sensor;
+  protected waste !: Waste;
+
+  protected storesSource: Store[] = [];
+  protected sensorsSource: Sensor[] = [];
+  protected wastesSource: Waste[] = [];
+
+  private storeService = inject(ZoneApiService);
+  private sensorService = inject(SensorApiService);
+  private wasteService = inject(WasteApiService);
 
   @ViewChild('formAddSensor') formAddSensorRef!: ElementRef<HTMLFormElement>;
   @ViewChild(GraphicCreateComponent) graphicCreateComponent!: GraphicCreateComponent;
 
+
+
   constructor(
-    private storeService: StoreService,
     private graphicService: GraphicService
-  ) {}
+  ) {
+    this.storeData = new Store({})
+    this.sensorData = new Sensor({})
+    this.waste = new Waste({})
+  }
 
   sensorSelected = "";
-  store: Store[] = [];
 
   ngOnInit(){
-    this.storeService.store$.subscribe(store => {
-      this.currentStore = store;
-      if (store) {
-        this.store.push(store);
-      }
-    })
+    this.storeService.stores$.subscribe(stores => {
+      this.storesSource = stores;
+    });
+
+    this.sensorService.sensor$.subscribe(sensors => {
+      this.sensorsSource = sensors;
+    });
+
+    this.getAllWastes();
   }
 
   getStoreNameFromFthr(e: string){
@@ -68,39 +85,65 @@ export class SensorCreateAndEditComponent implements OnInit{
     const ubication = document.getElementById('ubication') as HTMLInputElement;
     const unities = document.getElementById('unities-sensor') as HTMLInputElement;
 
-    this.store.forEach(store => {
-      if (store.name == this.sensorSelected){
-        let id = uuidv4();
-        let currentDate = new Date();
+    const store = this.storesSource.filter(store => store.name == this.sensorSelected);
 
-        let idWaste = uuidv4();
-        let amountWaste = Math.floor(Math.random() * 40);
+    let id = uuidv4();
+    let currentDate = new Date();
+    let capacities = Math.random() * 100;
+    let currentLevel = Math.floor(Math.random() * 100);
+    let percentage = Math.floor(Math.random() * 100);
 
-        let newWaste = new Waste({
-          id: idWaste,
-          typeWaste: typeWaste.value,
-          amount: amountWaste
-        })
+    let idWaste = uuidv4();
+    let amountWaste = Math.floor(Math.random() * 40);
 
-        let newSensor = new Sensor({id: id, numberSensor: 0, wasteDetected: [newWaste],
-          sensorUbication: ubication.value, status: "Active", batteryLevel: 100,
-          lastReadingDate: currentDate.toDateString(), typeSensor: "waste detection", unities: unities.value
-        })
-        store.sensor.push(newSensor)
-        store.amountSensor++;
-        console.log(store)
-      }
+    let newWaste = new Waste({
+      id: idWaste,
+      typeWaste: typeWaste.value,
+      amount: amountWaste
     })
-    let form = this.formAddSensorRef.nativeElement;
-    form.classList.toggle('return-to-hide');
+
+    let newSensor = new Sensor({id: id, sensorNumber: 0, wasteIds: [],
+      location: ubication.value, status: "Active", batteryLevel: 100,
+      lastReadingDate: currentDate.toDateString(), typeSensor: "waste detection",
+      units: unities.value, capacity: capacities.toString(),
+      currentLevel: currentLevel.toString(), percentage: percentage.toString(),
+      collection: "No"
+    })
+
+    this.sensorService.createSensor(newSensor).subscribe({
+      next: () => {
+        store[0].sensorIds.push(id);
+        store[0].amountSensor++;
+
+        this.storeService.update(store[0].id, store[0]).subscribe(() => {
+          this.storeService.updateStoreLocally(store[0]);
+
+          let form = this.formAddSensorRef.nativeElement;
+          form.classList.toggle('return-to-hide');
+          typeWaste.value = '';
+          ubication.value = '';
+          unities.value = '';
+
+          this.graphicService.triggerRedraw();
+        });
+      },
+      error: (err) => {
+        console.error('Error ', err);
+      }
+    });
+
     this.graphicService.triggerRedraw();
 
-    typeWaste.value = '';
-    ubication.value = '';
-    unities.value = '';
   }
 
 
+  // Get all from api
+
+  private getAllWastes() {
+    this.wasteService.getAll().subscribe((wastes: Array<Waste>) => {
+      this.wastesSource = wastes;
+    });
+  }
 
 
 }

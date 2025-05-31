@@ -1,0 +1,58 @@
+<div class="login-container">
+  <form class="login-box" (ngSubmit)="onRegister()">
+    <h2 class="login-title">{{ 'register.title' | translate }}</h2>
+
+    <div class="input-group">
+      <input
+        type="text"
+        [(ngModel)]="username"
+        name="username"
+        [placeholder]="'register.usernamePlaceholder' | translate"
+        required
+      />
+    </div>
+
+    <div class="input-group">
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        [placeholder]="'register.emailPlaceholder' | translate"
+        required
+      />
+    </div>
+
+    <div class="input-group">
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        [placeholder]="'register.passwordPlaceholder' | translate"
+        required
+      />
+    </div>
+
+    <div class="input-group">
+      <select [(ngModel)]="role" name="role" required>
+        <option value="" disabled selected>
+          {{ 'register.selectRole' | translate }}
+        </option>
+        <option value="empresa">{{ 'register.roleEmpresa' | translate }}</option>
+        <option value="admin">{{ 'register.roleAdmin' | translate }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="login-btn">
+      {{ 'register.registerButton' | translate }}
+    </button>
+
+    <p class="signup-text">
+      {{ 'register.alreadyHaveAccount' | translate }}
+      <a (click)="goToLogin()" class="signup-link" style="cursor:pointer;">
+        {{ 'register.loginLink' | translate }}
+      </a>
+    </p>
+
+    <div *ngIf="registerError" class="error-text">{{ registerError }}</div>
+  </form>
+</div>

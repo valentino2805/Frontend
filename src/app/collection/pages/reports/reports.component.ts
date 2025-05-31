@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
+import { Store } from '../../../controlPanel/model/store.entity';
+import {TranslateModule} from "@ngx-translate/core";
+import {GraphicService} from "../../../controlPanel/services/graphic.service";
+import {Sensor} from "../../../controlPanel/model/sensor.entity";
+import {Waste} from "../../../controlPanel/model/waste.entity";
+import {ZoneApiService} from "../../../controlPanel/services/zone-api.service";
+import {SensorApiService} from "../../../controlPanel/services/sensor-api.service";
+import {WasteApiService} from "../../../controlPanel/services/waste-api.service";
 
 interface ReportRow {
   zona: string;
@@ -20,9 +28,23 @@ interface ReportRow {
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule, TranslateModule]
 })
-export class ReportsComponent {
+export class ReportsComponent implements OnInit {
+
+  protected storeData !: Store;
+  protected sensorData !: Sensor;
+  protected waste !: Waste;
+
+  protected storesSource: Store[] = [];
+  protected sensorsSource: Sensor[] = [];
+  protected wastesSource: Waste[] = [];
+
+  private storeService = inject(ZoneApiService);
+  private sensorService = inject(SensorApiService);
+  private wasteService = inject(WasteApiService);
+
+
   idioma: 'es' | 'en' = 'es';
 
   textos = {
@@ -68,11 +90,61 @@ export class ReportsComponent {
   mesSeleccionado = '';
   anioSeleccionado = '';
 
-  rows: ReportRow[] = [
-    { zona: 'Planta Norte', tipo: 'Orgánico', kg: '480 kg', fecha: '04/04/2025', mes: 'Abril', anio: '2025' },
-    { zona: 'Planta Sur', tipo: 'Plástico', kg: '320 kg', fecha: '15/03/2025', mes: 'Marzo', anio: '2025' },
-    { zona: 'Planta Este', tipo: 'Vidrio', kg: '150 kg', fecha: '20/04/2024', mes: 'Abril', anio: '2024' }
-  ];
+  rows: ReportRow[] = [];
+
+  constructor() {
+    this.storeData = new Store({})
+    this.sensorData = new Sensor({})
+    this.waste = new Waste({})
+  }
+
+  ngOnInit() {
+    this.storeService.getAll().subscribe((zones: Store[]) => {
+      this.rows = [];
+      zones.forEach(zone => {
+        if (zone.sensorIds && zone.sensorIds.length > 0) {
+          zone.sensorIds.forEach(sensor => {
+            // Si hay varios tipos de residuo por sensor, puedes adaptar esto
+            this.sensorsSource.forEach(sensorAux => {
+              if (sensorAux.id === sensor){
+                this.rows.push({
+                  zona: zone.name,
+                  tipo: sensorAux.typeSensor || '-',
+                  kg: (sensorAux.currentLevel ? sensorAux.currentLevel + ' kg' : '-'),
+                  fecha: sensorAux.lastReadingDate || '-',
+                  mes: this.getMes(sensorAux.lastReadingDate ),
+                  anio: this.getAnio(sensorAux.lastReadingDate)
+                });
+              }
+            })
+          });
+        }
+      });
+    });
+
+    this.getAllSensors();
+    this.getAllWastes();
+  }
+
+  getMes(fecha: string): string {
+    if (!fecha) return '';
+    const partes = fecha.split('/');
+    if (partes.length === 3) {
+      // Formato dd/mm/yyyy
+      const mesNum = parseInt(partes[1], 10) - 1;
+      return this.meses[mesNum] || '';
+    }
+    return '';
+  }
+
+  getAnio(fecha: string): string {
+    if (!fecha) return '';
+    const partes = fecha.split('/');
+    if (partes.length === 3) {
+      return partes[2];
+    }
+    return '';
+  }
 
   get filteredRows() {
     return this.rows.filter(row =>
@@ -114,4 +186,26 @@ export class ReportsComponent {
     const data: Blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
     saveAs(data, 'reporte.xlsx');
   }
-} 
+
+
+
+
+  // Get all from api
+  private getAllStores() {
+    this.storeService.getAll().subscribe((stores: Array<Store>) => {
+      this.storesSource = stores;
+    });
+  }
+
+  private getAllSensors() {
+    this.sensorService.getAll().subscribe((sensors: Array<Sensor>) => {
+      this.sensorsSource = sensors;
+    });
+  }
+
+  private getAllWastes() {
+    this.wasteService.getAll().subscribe((wastes: Array<Waste>) => {
+      this.wastesSource = wastes;
+    });
+  }
+}

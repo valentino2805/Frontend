@@ -11,19 +11,21 @@
           <li>{{ "controlPanel.action" | translate }}</li>
         </ul>
       </div>
-      <div class="zone-item-new" *ngFor="let store of stores">
+      <div class="zone-item-new" *ngFor="let store of storesSource">
         <ul>
           <li class="zon-name">{{ store.name }}</li>
           <li class="zon-ubi">{{ store.ubication }}</li>
           <li class="zon-sensor-num">{{ store.amountSensor }}</li>
           <li class="zon-button">
-            <button type="button" class="zon-button-lock" role="button">{{ "controlPanel.see" | translate }}</button>
+            <button type="button" class="zon-button-lock" role="button" (click)="showInfoSensor(store.name)">{{ "controlPanel.see" | translate }}</button>
             <button type="button" class="zon-button-add" role="button" (click)="addNewSensor(store.name)">{{ "controlPanel.add" | translate }}</button>
-            <button type="button" class="zon-button-delete" role="button">{{ "controlPanel.delete" | translate }}</button>
+            <button type="button" class="zon-button-delete" role="button" (click)="deleteSensor(store.name)">{{ "controlPanel.delete" | translate }}</button>
           </li>
         </ul>
       </div>
       <app-sensor-create-and-edit></app-sensor-create-and-edit>
+      <app-sensor-show-info></app-sensor-show-info>
+      <app-sensor-delete></app-sensor-delete>
     </div>
   </div>
 </div>

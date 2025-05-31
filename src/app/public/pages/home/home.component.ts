@@ -1,6 +1,8 @@
+// home.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { Router } from '@angular/router'; // Importar Router
 
 @Component({
   selector: 'app-home',
@@ -11,4 +13,12 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class HomeComponent {
   name = 'home';
+
+  // Inyecta Router en el constructor
+  constructor(private router: Router) {}
+
+  // Método para redirigir a controlPanel
+  navigateToControlPanel() {
+    this.router.navigate(['/controlPanel']); // Redirige a la ruta del Panel de Control
+  }
 }
