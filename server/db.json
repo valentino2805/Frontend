@@ -185,6 +185,29 @@
       "amount": 7
     }
   ],
+  "actions": [
+    {
+      "id": 1,
+      "title": "Implementa contenedores diferenciados",
+      "description": "Separa residuos en reciclables, orgánicos y peligrosos dentro de la empresa.",
+      "type": "almacenamiento",
+      "favorite": false
+    },
+    {
+      "id": 2,
+      "title": "Optimiza el uso del aire acondicionado",
+      "description": "Programa horarios y temperatura eficiente para reducir el consumo energético.",
+      "type": "mejora operativa",
+      "favorite": false
+    },
+    {
+      "id": 3,
+      "title": "Promueve la movilidad sostenible",
+      "description": "Incentiva el uso de bicicletas o transporte público entre colaboradores.",
+      "type": "normativas",
+      "favorite": false
+    }
+  ],
   "users": [
     {
       "id": "1",
