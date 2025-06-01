@@ -1,9 +1,9 @@
-import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
-import {TipsCardComponent} from "../tips-card/tips-card.component";
-import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import { TipsCardComponent } from "../tips-card/tips-card.component";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 import { Action } from '../../model/action.entity';
-import {TranslateModule} from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
 import { ActionService } from '../../services/action.service';
 
 @Component({
@@ -13,24 +13,19 @@ import { ActionService } from '../../services/action.service';
   templateUrl: './tips-list.component.html',
   styleUrl: './tips-list.component.css'
 })
-export class TipsListComponent implements OnInit {
-  actions: Action[] = [];
+export class TipsListComponent implements OnChanges {
+  constructor(private actionService: ActionService) {}
+  @Input() actions: Action[] = [];
+  @Output() favoriteChanged = new EventEmitter<void>();
+
   filteredActions: Action[] = [];
   searchTerm: string = '';
   filterType: string = '';
 
-  constructor(private actionService: ActionService) {}
-
-  ngOnInit(): void {
-    this.actionService.getAll().subscribe({
-      next: (data) => {
-        this.actions = data;
-        this.applyFilters();
-      },
-      error: (err) => {
-        console.error('Error loading actions from API', err);
-      }
-    });
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['actions']) {
+      this.applyFilters();
+    }
   }
 
   onSearch(): void {
@@ -51,12 +46,21 @@ export class TipsListComponent implements OnInit {
 
   toggleFavorite(action: Action): void {
     action.favorite = !action.favorite;
+    this.actionService.update(action.id, action).subscribe(()=>{
+      this.applyFilters();
+      this.favoriteChanged.emit();
+    });
   }
 
   deleteAction(id: number): void {
-    this.actionService.delete(id).subscribe(() => {
-      this.actions = this.actions.filter(a => a.id !== id);
-      this.applyFilters();
+    this.actionService.delete(id).subscribe({
+      next: () => {
+        this.actions = this.actions.filter(a => a.id !== id);
+        this.applyFilters();
+      },
+      error: (err) => {
+        console.error('Error deleting action:', err);
+      }
     });
   }
 }

@@ -187,25 +187,32 @@
   ],
   "actions": [
     {
-      "id": 1,
-      "title": "Implementa contenedores diferenciados",
-      "description": "Separa residuos en reciclables, orgánicos y peligrosos dentro de la empresa.",
-      "type": "almacenamiento",
-      "favorite": false
-    },
-    {
       "id": 2,
       "title": "Optimiza el uso del aire acondicionado",
       "description": "Programa horarios y temperatura eficiente para reducir el consumo energético.",
       "type": "mejora operativa",
+      "favorite": true
+    },
+    {
+      "id": 1748813923288,
+      "title": "Reduce el uso de papel en la oficina",
+      "description": "Fomenta el uso de documentos digitales y evita impresiones innecesarias.",
+      "type": "almacenamiento",
       "favorite": false
     },
     {
-      "id": 3,
-      "title": "Promueve la movilidad sostenible",
-      "description": "Incentiva el uso de bicicletas o transporte público entre colaboradores.",
-      "type": "normativas",
+      "id": 1748814112917,
+      "title": "Implementa almacenamiento en la nube sostenible",
+      "description": "Utiliza servicios cloud con certificaciones ecológicas para reducir la huella de carbono de los servidores físicos.",
+      "type": "almacenamiento",
       "favorite": false
+    },
+    {
+      "id": 1748814132476,
+      "title": "Cumple con normativas ambientales locales",
+      "description": "Revisa periódicamente las leyes ambientales y asegúrate de que tu empresa está al día con las regulaciones.",
+      "type": "normativas",
+      "favorite": true
     }
   ],
   "users": [

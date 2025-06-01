@@ -1,25 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import {TipsListComponent} from "../../components/tips-list/tips-list.component";
-import {Action} from "../../model/action.entity";
+import { TipsListComponent } from "../../components/tips-list/tips-list.component";
+import { Action } from "../../model/action.entity";
 import {
   ActionsCreateAndEditComponent
 } from "../../components/actions-create-and-edit/actions-create-and-edit.component";
-import {CommonModule} from "@angular/common";
+import { CommonModule } from "@angular/common";
+import { ActionService } from "../../services/action.service";
 
 @Component({
   selector: 'app-sustainable-actions',
   standalone: true,
-  imports: [CommonModule,TranslateModule,TipsListComponent,ActionsCreateAndEditComponent],
+  imports: [CommonModule, TranslateModule, TipsListComponent, ActionsCreateAndEditComponent],
   templateUrl: './sustainable-actions.component.html',
   styleUrl: './sustainable-actions.component.css'
 })
-export class SustainableActionsComponent {
+export class SustainableActionsComponent implements OnInit {
   showModal = false;
   newAction: Action | null = null;
 
-  createdActions: Action[] = [];
-  accionesDesdeModal: Action[] = [];
+  actions: Action[] = [];
+
+  constructor(private actionService: ActionService) {}
+
+  ngOnInit(): void {
+    this.loadActions();
+  }
+
+  loadActions(): void {
+    this.actionService.getAll().subscribe({
+      next: (data) => {
+        this.actions = this.sortActions(data);
+      },
+      error: (err) => {
+        console.error('Error loading actions:', err);
+      }
+    });
+  }
 
   openModal() {
     this.newAction = new Action({ id: Date.now(), title: '', description: '', type: '', favorite: false });
@@ -27,10 +44,18 @@ export class SustainableActionsComponent {
   }
 
   onSaveAction(action: Action) {
-    this.createdActions.push(action);
-    this.accionesDesdeModal = [...this.createdActions];
+    this.actionService.create(action).subscribe({
+      next: (savedAction) => {
+        this.actions = [...this.actions, savedAction];
+      },
+      error: (err) => {
+        console.error('Error saving action:', err);
+      }
+    });
   }
-
+  private sortActions(actions: Action[]): Action[] {
+    return actions.sort((a, b) => Number(b.favorite) - Number(a.favorite));
+  }
   onCloseModal() {
     this.showModal = false;
   }
