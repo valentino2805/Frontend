@@ -205,14 +205,14 @@
       "title": "Implementa almacenamiento en la nube sostenible",
       "description": "Utiliza servicios cloud con certificaciones ecológicas para reducir la huella de carbono de los servidores físicos.",
       "type": "almacenamiento",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 1748814132476,
       "title": "Cumple con normativas ambientales locales",
       "description": "Revisa periódicamente las leyes ambientales y asegúrate de que tu empresa está al día con las regulaciones.",
       "type": "normativas",
-      "favorite": true
+      "favorite": false
     }
   ],
   "users": [
