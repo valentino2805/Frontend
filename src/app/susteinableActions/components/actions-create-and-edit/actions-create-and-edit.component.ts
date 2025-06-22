@@ -20,9 +20,13 @@ export class ActionsCreateAndEditComponent {
   @Input() action: Action = new Action({ id: 0, title: '', description: '', type: '', favorite: false });
 
   submitForm() {
-    if (this.action.title && this.action.description && this.action.type) {
-      this.save.emit(this.action);
-      this.close.emit();
+    const actionToSave = new Action(this.action);
+    if (actionToSave.title && actionToSave.description && actionToSave.type) {
+      this.save.emit(actionToSave);
     }
+  }
+
+  onCloseClick() {
+    this.close.emit();
   }
 }
