@@ -1,43 +1,111 @@
 .tip-card {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #E0E0E0;
   border-radius: 10px;
-  padding: 1rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 1.8rem;
+  background-color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
+.tip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .tip-card {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 }
 
 .tip-content {
   flex-grow: 1;
+  margin-bottom: 1rem;
 }
 
-.tip-card h3 {
+@media (min-width: 768px) {
+  .tip-content {
+    margin-bottom: 0;
+    padding-right: 1.5rem;
+  }
+}
+
+.tip-title {
   margin: 0;
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 0.6rem;
 }
 
-.tip-card p {
-  margin: 0.25rem 0 0 0;
-  font-size: 0.9rem;
-  color: #555;
+.tip-description {
+  margin: 0.3rem 0 0.9rem 0;
+  font-size: 0.98rem;
+  color: #555555;
+  line-height: 1.5;
 }
 
-.actions {
+.tip-type {
+  display: inline-block;
+  background-color: rgba(0, 162, 149, 0.08);
+  color: #00796B;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.tip-actions {
   display: flex;
-  gap: 0.5rem;
+  flex-direction: row;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.actions button {
+@media (min-width: 768px) {
+  .tip-actions {
+    justify-content: flex-end;
+  }
+}
+
+.tip-actions button {
   border: none;
   background-color: transparent;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.actions .delete {
-  color: #f44336;
+.tip-actions button:hover {
+  background-color: #F8F8F8;
+  transform: translateY(-2px);
+}
+
+.favorite-button {
+  color: #FF6B6B;
+}
+
+.favorite-button svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.delete-button {
+  color: #DC3545;
+}
+
+.delete-button svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
 }

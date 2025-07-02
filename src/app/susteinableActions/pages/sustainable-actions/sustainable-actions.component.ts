@@ -30,7 +30,12 @@ export class SustainableActionsComponent implements OnInit {
   loadActions(): void {
     this.actionService.getAll().subscribe({
       next: (data) => {
-        this.actions = this.sortActions(data);
+        if (Array.isArray(data)) {
+          this.actions = this.sortActions(data);
+        } else {
+          console.error('Data received from API is not an array:', data);
+          this.actions = [];
+        }
       },
       error: (err) => {
         console.error('Error loading actions:', err);
@@ -46,17 +51,30 @@ export class SustainableActionsComponent implements OnInit {
   onSaveAction(action: Action) {
     this.actionService.create(action).subscribe({
       next: (savedAction) => {
-        this.actions = [...this.actions, savedAction];
+        const newActionInstance = new Action(savedAction);
+        this.actions = [...this.actions, newActionInstance];
+        this.actions = this.sortActions(this.actions);
       },
       error: (err) => {
         console.error('Error saving action:', err);
+      },
+      complete: () => {
+        this.onCloseModal();
+        this.loadActions();
       }
     });
   }
+
   private sortActions(actions: Action[]): Action[] {
     return actions.sort((a, b) => Number(b.favorite) - Number(a.favorite));
   }
+
   onCloseModal() {
     this.showModal = false;
+    this.newAction = null;
+  }
+
+  onFavoriteChanged() {
+    this.loadActions();
   }
 }

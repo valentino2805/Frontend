@@ -191,7 +191,7 @@
       "title": "Optimiza el uso del aire acondicionado",
       "description": "Programa horarios y temperatura eficiente para reducir el consumo energético.",
       "type": "mejora operativa",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": 1748813923288,
@@ -205,7 +205,7 @@
       "title": "Implementa almacenamiento en la nube sostenible",
       "description": "Utiliza servicios cloud con certificaciones ecológicas para reducir la huella de carbono de los servidores físicos.",
       "type": "almacenamiento",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": 1748814132476,

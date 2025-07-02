@@ -22,6 +22,10 @@ export class TipsListComponent implements OnChanges {
   searchTerm: string = '';
   filterType: string = '';
 
+  currentPage: number = 1;
+  itemsPerPage: number = 6;
+  totalPages: number = 1;
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['actions']) {
       this.applyFilters();
@@ -29,26 +33,59 @@ export class TipsListComponent implements OnChanges {
   }
 
   onSearch(): void {
+    this.currentPage = 1;
     this.applyFilters();
   }
 
   onFilter(type: string): void {
     this.filterType = type;
+    this.currentPage = 1;
     this.applyFilters();
   }
 
   applyFilters(): void {
-    this.filteredActions = this.actions.filter(a =>
+    let tempFiltered = this.actions.filter(a =>
       a.title.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
       (!this.filterType || a.type === this.filterType)
     );
+    this.filteredActions = this.sortActions(tempFiltered);
+
+    this.totalPages = Math.ceil(this.filteredActions.length / this.itemsPerPage);
+    if (this.currentPage > this.totalPages && this.totalPages > 0) {
+      this.currentPage = this.totalPages;
+    } else if (this.totalPages === 0) {
+      this.currentPage = 1;
+    }
+  }
+
+  get displayedActions(): Action[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.filteredActions.slice(startIndex, endIndex);
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
   }
 
   toggleFavorite(action: Action): void {
     action.favorite = !action.favorite;
-    this.actionService.update(action.id, action).subscribe(()=>{
-      this.applyFilters();
-      this.favoriteChanged.emit();
+    this.actionService.update(action.id, action).subscribe({
+      next: () => {
+        this.favoriteChanged.emit();
+      },
+      error: (err) => {
+        console.error('Error updating favorite status:', err);
+        action.favorite = !action.favorite;
+      }
     });
   }
 
@@ -62,5 +99,9 @@ export class TipsListComponent implements OnChanges {
         console.error('Error deleting action:', err);
       }
     });
+  }
+
+  private sortActions(actions: Action[]): Action[] {
+    return [...actions].sort((a, b) => Number(b.favorite) - Number(a.favorite));
   }
 }
