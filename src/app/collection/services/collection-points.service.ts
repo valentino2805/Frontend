@@ -4,30 +4,31 @@ import { Observable } from 'rxjs';
 import { CollectionPoint } from '../model/collection-points.entity';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CollectionPointsService {
 
-  private apiUrl = 'http://localhost:3000/collectionPoints';  // Asegúrate de que esta URL esté correcta para tu db.json
+    private apiUrl = 'https://backend-web-applications-1.onrender.com/api/v1/collection-points\n';
 
-  constructor(private http: HttpClient) {}
 
-  getAll(): Observable<CollectionPoint[]> {
-    return this.http.get<CollectionPoint[]>(this.apiUrl);
-  }
+    constructor(private http: HttpClient) {}
 
-  // Método para agregar un nuevo punto de acopio
-  addCollectionPoint(newPoint: CollectionPoint): Observable<CollectionPoint> {
-    return this.http.post<CollectionPoint>(this.apiUrl, newPoint);
-  }
+    getAll(): Observable<CollectionPoint[]> {
+        return this.http.get<CollectionPoint[]>(this.apiUrl);
+    }
 
-  // Método para eliminar un punto de acopio
-  deleteCollectionPoint(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
-  }
+    // Método para agregar un nuevo punto de acopio
+    addCollectionPoint(newPoint: CollectionPoint): Observable<CollectionPoint> {
+        return this.http.post<CollectionPoint>(this.apiUrl, newPoint);
+    }
 
-  // Método para actualizar un punto de acopio
-  updateCollectionPoint(id: number, updatedPoint: CollectionPoint): Observable<CollectionPoint> {
-    return this.http.put<CollectionPoint>(`${this.apiUrl}/${id}`, updatedPoint);
-  }
+    // Método para eliminar un punto de acopio
+    deleteCollectionPoint(id: string): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    }
+
+    // Método para actualizar un punto de acopio
+    updateCollectionPoint(id: string, updatedPoint: CollectionPoint): Observable<CollectionPoint> {
+        return this.http.put<CollectionPoint>(`${this.apiUrl}/${id}`, updatedPoint);
+    }
 }
