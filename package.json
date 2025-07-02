@@ -1,6 +1,7 @@
 {
   "name": "stadistics-bounded-context",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -27,6 +28,7 @@
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.9",
     "chartjs-plugin-datalabels": "^2.2.0",
+    "eventemitter3": "^5.0.1",
     "file-saver": "^2.0.5",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",

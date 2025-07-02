@@ -286,5 +286,213 @@
       "password": "u20211a962",
       "role": "empresa"
     }
+  ],
+  "scores": [
+    {
+      "id": "1",
+      "userId": "kAj88Hb",
+      "points": 150,
+      "lastUpdated": "2025-05-23"
+    },
+    {
+      "id": "2",
+      "userId": "1",
+      "points": 200,
+      "lastUpdated": "2025-05-23"
+    },
+    {
+      "id": "3",
+      "userId": "2",
+      "points": 80,
+      "lastUpdated": "2025-05-23"
+    },
+    {
+      "id": "4",
+      "userId": "3",
+      "points": 120,
+      "lastUpdated": "2025-05-23"
+    },
+    {
+      "id": "5",
+      "userId": "4",
+      "points": 65,
+      "lastUpdated": "2025-05-23"
+    },
+    {
+      "params": {
+        "params": {
+          "id": "6",
+          "userId": "5",
+          "points": 175,
+          "lastUpdated": "2025-05-23"
+        },
+        "id": "6",
+        "userId": "5",
+        "points": 175,
+        "lastUpdated": "2025-05-23",
+        "remainingPoints": 75
+      },
+      "id": "6",
+      "userId": "5",
+      "points": 175,
+      "lastUpdated": "2025-05-23",
+      "remainingPoints": 105
+    },
+    {
+      "id": "7",
+      "userId": "6",
+      "points": 90,
+      "lastUpdated": "2025-05-23"
+    },
+    {
+      "id": "8",
+      "userId": "7",
+      "points": 140,
+      "lastUpdated": "2025-05-23"
+    },
+    {
+      "id": "9",
+      "userId": "8",
+      "points": 85,
+      "lastUpdated": "2025-05-23"
+    },
+    {
+      "id": "10",
+      "userId": "9",
+      "points": 210,
+      "lastUpdated": "2025-05-23"
+    },
+    {
+      "id": "11",
+      "userId": "10",
+      "points": 95,
+      "lastUpdated": "2025-05-23"
+    }
+  ],
+  "rewards": [
+    {
+      "params": {
+        "id": "1",
+        "name": "Descuento en tienda ecológica",
+        "description": "Obtén un 10% de descuento en productos ecológicos al reciclar más de 50 kg de plástico.",
+        "pointsRequired": 100,
+        "imageUrl": "https://picsum.photos/200/300",
+        "codesAvailable": 1
+      },
+      "id": "1",
+      "description": "Obtén un 10% de descuento en productos ecológicos al reciclar más de 50 kg de plástico.",
+      "pointsRequired": 100,
+      "imageUrl": "https://picsum.photos/200/300",
+      "codesAvailable": 0
+    },
+    {
+      "params": {
+        "id": "2",
+        "name": "Bolsa reutilizable",
+        "description": "Recibe una bolsa reutilizable al reciclar más de 30 kg de papel.",
+        "pointsRequired": 50,
+        "imageUrl": "https://picsum.photos/300/400",
+        "codesAvailable": 1
+      },
+      "id": "2",
+      "description": "Recibe una bolsa reutilizable al reciclar más de 30 kg de papel.",
+      "pointsRequired": 50,
+      "imageUrl": "https://picsum.photos/300/400",
+      "codesAvailable": 0
+    },
+    {
+      "params": {
+        "id": "3",
+        "name": "Certificado de reconocimiento",
+        "description": "Obtén un certificado por tu compromiso con el reciclaje y la sostenibilidad.",
+        "pointsRequired": 20,
+        "imageUrl": "https://picsum.photos/500/600",
+        "codesAvailable": 1
+      },
+      "id": "3",
+      "description": "Obtén un certificado por tu compromiso con el reciclaje y la sostenibilidad.",
+      "pointsRequired": 20,
+      "imageUrl": "https://picsum.photos/500/600",
+      "codesAvailable": 0
+    }
+  ],
+  "codes": [
+    {
+      "id": "A1B2C3",
+      "rewardId": "1",
+      "code": "ECODISC10",
+      "isRedeemed": true,
+      "createdAt": "2023-05-15",
+      "expiresAt": "2023-12-31",
+      "userId": null
+    },
+    {
+      "id": "D4E5F6",
+      "rewardId": "1",
+      "code": "GREENSTORE25",
+      "isRedeemed": true,
+      "createdAt": "2023-05-15",
+      "expiresAt": "2023-12-31",
+      "userId": "2"
+    },
+    {
+      "id": "G7H8I9",
+      "rewardId": "2",
+      "code": "ECOBAG2023",
+      "isRedeemed": true,
+      "createdAt": "2023-06-01",
+      "expiresAt": "2023-11-30",
+      "userId": null
+    },
+    {
+      "id": "J0K1L2",
+      "rewardId": "2",
+      "code": "REUSEBAG50",
+      "isRedeemed": true,
+      "createdAt": "2023-06-01",
+      "expiresAt": "2023-11-30",
+      "userId": "5"
+    },
+    {
+      "id": "M3N4O5",
+      "rewardId": "3",
+      "code": "CERTIFICATE20",
+      "isRedeemed": true,
+      "createdAt": "2023-07-10",
+      "expiresAt": "2023-10-10",
+      "userId": null
+    },
+    {
+      "id": "P6Q7R8",
+      "rewardId": "3",
+      "code": "RECYCLESTAR",
+      "isRedeemed": true,
+      "createdAt": "2023-07-10",
+      "expiresAt": "2023-10-10",
+      "userId": "8"
+    }
+  ],
+  "activities": [
+    {
+      "id": "1",
+      "userId": "5",
+      "description": "Reciclaje de plástico",
+      "points": 50,
+      "date": "2025-05-23"
+    },
+    {
+      "id": "2",
+      "userId": "5",
+      "description": "Reciclaje de papel",
+      "points": 30,
+      "date": "2025-05-23"
+    },
+    {
+      "id": "3",
+      "userId": "5",
+      "description": "Reciclaje de vidrio",
+      "points": 40,
+      "date": "2025-05-23"
+    }
   ]
 }
