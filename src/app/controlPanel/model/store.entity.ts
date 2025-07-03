@@ -1,6 +1,6 @@
 export class Store {
-  id = "";
-  sensorIds :string[] = [];
+  id = 0;
+  sensorIds :number[] = [];
   name = "";
   numberStore = 0;
   amountSensor = 0;
@@ -9,8 +9,8 @@ export class Store {
   ubication = "";
 
   constructor(store: {
-    id ?: string,
-    sensorIds ?: string[],
+    id ?: number,
+    sensorIds ?: number[],
     name ?: string,
     numberStore ?: number,
     amountSensor ?: number,
@@ -18,7 +18,7 @@ export class Store {
     color ?: string,
     ubication ?: string
   }) {
-    this.id = store.id || "";
+    this.id = store.id || 0;
     this.name = store.name || "";
     this.numberStore = store.numberStore || 0;
     this.amountSensor = store.amountSensor || 0;

@@ -41,7 +41,7 @@ export class SensorApiService extends BaseService<Sensor>{
     );
   }
 
-  deleteSensor(id: string): Observable<void> {
+  deleteSensor(id: number): Observable<void> {
     return this.delete(id).pipe(
       tap(() => {
         const updatedList = this.sensorSubject.value.filter(s => s.id !== id);

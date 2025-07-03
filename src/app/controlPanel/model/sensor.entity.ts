@@ -1,7 +1,7 @@
 export class Sensor {
-  id = "";
-  sensorNumber = 0;
-  wasteIds: string[] = [];
+  id = 0;
+  serialNumber = "";
+  wasteIds: number[] = [];
   location = "";
   status = "";
   batteryLevel = 0;
@@ -14,9 +14,9 @@ export class Sensor {
   collection = "";
 
   constructor(sensor: {
-    id ?: string,
-    sensorNumber ?: number,
-    wasteIds ?: string[],
+    id ?: number,
+    serialNumber ?: string,
+    wasteIds ?: number[],
     location ?: string,
     status ?: string,
     batteryLevel ?: number,
@@ -28,9 +28,9 @@ export class Sensor {
     percentage?: string,
     collection?: string
   }) {
-    this.id = sensor.id || "";
-    this.sensorNumber = sensor.sensorNumber || 0;
-    this.wasteIds = sensor.wasteIds ? sensor.wasteIds : [];
+    this.id = sensor.id || 0;
+    this.serialNumber = sensor.serialNumber || "";
+    this.wasteIds = sensor.wasteIds ? sensor.wasteIds : [] || null;
     this.location = sensor.location || "";
     this.status = sensor.status || "";
     this.batteryLevel = sensor.batteryLevel || 0;

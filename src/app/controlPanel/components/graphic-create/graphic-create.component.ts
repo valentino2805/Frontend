@@ -15,7 +15,7 @@ import {debounceTime, Subscription} from "rxjs";
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import html2canvas from "html2canvas";
-import Chart from 'chart.js/auto';
+import Chart, {ChartType} from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 Chart.register(ChartDataLabels);
@@ -45,15 +45,13 @@ export class GraphicCreateComponent implements OnInit, AfterViewInit{
   name = 'graphic-create';
 
   currentStore: Store | null = null;
-  selectedType: string = '';
+  selectedType: string = 'bar';
   selectedTime: string = '';
 
   threshold = 70;
 
   months = ['January', 'February', 'March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   currentMonth = new Date().getMonth();
-  currentYear = new Date().getFullYear();
-  currentDate = new Date();
 
 
   protected storeData !: Store;
@@ -115,9 +113,8 @@ export class GraphicCreateComponent implements OnInit, AfterViewInit{
   chart: Chart | undefined;
 
   types: Type[] = [
-    {value: 'none', viewValue: 'none'},
-    {value: 'zone', viewValue: 'zone'},
-    {value: 'type-waste', viewValue: 'type-waste'},
+    {value: 'bar', viewValue: 'bar'},
+    {value: 'line', viewValue: 'line'},
   ];
 
   times: Time[] = [
@@ -215,8 +212,6 @@ export class GraphicCreateComponent implements OnInit, AfterViewInit{
 
 
 
-
-
   randomArrayNumber(){
     let array = [];
     for (let i = 0; i < this.months.length; i++) {
@@ -227,9 +222,17 @@ export class GraphicCreateComponent implements OnInit, AfterViewInit{
 
 
 
+  generateData(length: number): number[] {
+    return Array.from({ length }, () => Math.floor(Math.random() * 100));
+  }
+
   @ViewChild('wasteChart', { static: false }) wasteChartRef!: ElementRef<HTMLCanvasElement>;
 
   ngAfterViewInit() {
+    this.buildGraphic();
+  }
+
+  onFiltersChanged() {
     this.buildGraphic();
   }
 
@@ -245,20 +248,26 @@ export class GraphicCreateComponent implements OnInit, AfterViewInit{
     if (this.chart)
       this.chart.destroy();
 
+    let labels = this.months.slice(0, this.currentMonth + 1);
+    if (this.selectedTime === "weekly"){
+      labels = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+    } else if (this.selectedTime === 'annual') {
+      labels = ['2021', '2022', '2023', '2024', '2025'];
+    }
+
     const  datasetsZn = this.storesSource
       .filter(store => store.amountSensor > 0 )
       .map(store => ({
         label: store.name,
-        data: this.randomArrayNumber().slice(0, this.currentMonth + 1),
+        data: this.generateData(labels.length),
         backgroundColor: store.color,
-    }));
-
+      }));
 
     //Build a new graphic
     this.chart = new Chart(ctx, {
-      type: 'bar',
+      type: this.selectedType as ChartType,
       data: {
-        labels: this.months.slice(0, this.currentMonth + 1),
+        labels: labels,
         datasets: datasetsZn,
       },
       options: {
@@ -301,7 +310,7 @@ export class GraphicCreateComponent implements OnInit, AfterViewInit{
 
             const sensorCapacity = parseFloat(sensorAux.capacity);
             if (sensorCapacity > 0) {
-              const percentage = (amount / sensorCapacity) * 100;
+              const percentage = ((amount / sensorCapacity) * 100) / sensorAux.wasteIds.length;
               sensorAux.percentage = `${percentage.toFixed(0)}%`;
 
               this.sensorService.updateSensorLocally(sensorAux);
@@ -311,8 +320,18 @@ export class GraphicCreateComponent implements OnInit, AfterViewInit{
               })
 
               if (percentage > this.threshold){
+                let existSameStore = false;
                 this.sensorsAuxSh.push(sensorAux)
-                this.storesAuxSh.push(store)
+
+                this.storesAuxSh.forEach(st => {
+                  if (st.id === store.id){
+                    existSameStore = true;
+                  }
+                })
+
+                if (!existSameStore){
+                  this.storesAuxSh.push(store)
+                }
               }
 
             } else {

@@ -1,5 +1,5 @@
 
-.sensor-list-container{
+.delete-store-form-container{
   position: fixed;
   top: 0;
   left: 0;
@@ -9,7 +9,7 @@
   z-index: 100000;
 }
 
-.listTable{
+.delete-store-form{
   position: relative;
   top: 50%;
   left: 50%;
@@ -17,9 +17,10 @@
   background: #ffffff;
   padding: 10px;
   border-radius: 20px;
-  width: 50rem;
+  width: 1000px;
   text-align: center;
   animation: animation-panels 0.5s ease-in-out;
+
 
   .form-group{
     align-items: center;
@@ -29,8 +30,23 @@
     justify-content: space-around;
   }
 
+  ul{
+    list-style: none;
+  }
 
-  .close{
+  input{
+    padding: 5px;
+    margin-top: -10px!important;
+    width: 15rem;
+    border: none;
+    border-radius: 10px;
+    background: #D9F2EF;
+  }
+  input:focus{
+    outline: none;
+  }
+
+  .mat-icon{
     position: absolute;
     top: 5%;
     right: 2.5%;
@@ -39,24 +55,17 @@
     height: 2rem;
     width: 2rem;
   }
-
-  .sensor-list-item-container{
-    display: flex;
-    margin: 10px 0;
-    overflow-x: hidden;
-    scroll-snap-type: x mandatory;
-    gap: 20px;
-  }
-
-  ul{
-    scroll-snap-align: start;
-    background: #D9F2EF;
-    border-radius: 10px;
-    list-style: none;
-    padding: 15px;
-    margin: 0 20px;
-  }
 }
+
+.store-list-item-container{
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  width: 98%;
+  align-items: center;
+}
+
+
 
 @keyframes animation-panels {
   0%{
@@ -71,7 +80,7 @@
   display: block;
 }
 
-.add-sensor-button{
+.delete-store-button{
   background: #00A295;
   color: #ffffff;
   border: none;
@@ -80,26 +89,10 @@
   margin-top: 5px;
   padding: 5px 10px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .return-to-hide{
   display: none;
-}
-
-
-.sensor-list-item li{
-  display: flex;
-  width: 12rem;
-  justify-content: space-around;
-
-  span{
-    width: 100%;
-    justify-content: start;
-    text-align: start;
-  }
-}
-
-.navigate{
-   cursor: pointer;
 }
 

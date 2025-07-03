@@ -9,8 +9,6 @@ import {ZoneApiService} from "../../services/zone-api.service";
 import {SensorApiService} from "../../services/sensor-api.service";
 import {WasteApiService} from "../../services/waste-api.service";
 import {GraphicCreateComponent} from "../graphic-create/graphic-create.component";
-import {GraphicService} from "../../services/graphic.service";
-import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-sensor-show-info',
@@ -38,6 +36,7 @@ export class SensorShowInfoComponent implements OnInit{
 
   @ViewChild('listTableSensors') listTableSensors!: ElementRef<HTMLFormElement>;
   @ViewChild(GraphicCreateComponent) graphicCreateComponent!: GraphicCreateComponent;
+  @ViewChild('sensorContainer') sensorContainer!: ElementRef;
 
   constructor() {
     this.storeData = new Store({})
@@ -95,6 +94,20 @@ export class SensorShowInfoComponent implements OnInit{
   }
 
 
+
+
+  // Behavior of list
+  scrollNext() {
+    const container = this.sensorContainer.nativeElement;
+    const scrollAmount = container.offsetWidth;
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  }
+
+  scrollPrev() {
+    const container = this.sensorContainer.nativeElement;
+    const scrollAmount = container.offsetWidth;
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  }
 
 
 

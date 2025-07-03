@@ -80,3 +80,11 @@
 .return-to-hide{
   display: none;
 }
+
+.type-waste{
+  outline: none;
+  border: none;
+  background: #D9F2EF;
+  padding: 5px 10px;
+  border-radius: 20px;
+}

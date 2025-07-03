@@ -38,6 +38,7 @@ export class SensorDeleteComponent implements OnInit{
 
   @ViewChild('formDeleteSensor') formDeleteSensor!: ElementRef<HTMLFormElement>;
   @ViewChild(GraphicCreateComponent) graphicCreateComponent!: GraphicCreateComponent;
+  @ViewChild('sensorContainer') sensorContainer!: ElementRef;
 
 
 
@@ -107,7 +108,7 @@ export class SensorDeleteComponent implements OnInit{
       if (store.name == this.sensorSelected){
         store.sensorIds.forEach(sensor => {
           this.sensorsSource.forEach(sensorAux => {
-            if ( sensorAux.id === sensor && (sensorAux.sensorNumber).toString() === numSensor.value ){
+            if ( sensorAux.id === sensor && (sensorAux.serialNumber).toString() === numSensor.value ){
               let answ= prompt("Are you sure you want to delete this sensor? y/n", "n")
               if (answ === "y"){
 
@@ -143,6 +144,19 @@ export class SensorDeleteComponent implements OnInit{
     numSensor.value = '';
   }
 
+
+  // Behavior of list
+  scrollNext() {
+    const container = this.sensorContainer.nativeElement;
+    const scrollAmount = container.offsetWidth;
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  }
+
+  scrollPrev() {
+    const container = this.sensorContainer.nativeElement;
+    const scrollAmount = container.offsetWidth;
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  }
 
   // Get all from api
 

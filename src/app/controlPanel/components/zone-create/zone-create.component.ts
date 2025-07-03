@@ -44,6 +44,7 @@ export class ZoneCreateComponent implements OnInit {
 
   constructor(
     private graphicService: GraphicService
+
   ) {
     this.storeData = new Store({})
     this.sensorData = new Sensor({})
@@ -83,7 +84,12 @@ export class ZoneCreateComponent implements OnInit {
 
       // add random features to entity
       let randCl = "#" + Math.floor(Math.random() * 16777215).toString(16);
-      let id = uuidv4();
+      let id = Math.floor(Math.random() * 1423 + 1345);
+      this.storesSource.forEach(ss => {
+        while (id === ss.id){
+          id++;
+        }
+      })
       let num = this.numberOfStore + 1;
       this.numberOfStore++;
 
@@ -94,7 +100,7 @@ export class ZoneCreateComponent implements OnInit {
           name: zone,
           numberStore: num,
           amountSensor: 0,
-          fillPercent: "0",
+          fillPercent: "0%",
           color: randCl,
           ubication: ubicationZn
         });

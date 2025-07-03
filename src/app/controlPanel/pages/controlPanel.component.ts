@@ -6,7 +6,6 @@ import {GraphicCreateComponent} from "../components/graphic-create/graphic-creat
 import {SensorCreateAndEditComponent} from "../components/sensor-create-and-edit/sensor-create-and-edit.component";
 import {ZoneCreateComponent} from "../components/zone-create/zone-create.component";
 import {Store} from "../model/store.entity";
-import { v4 as uuidv4 } from 'uuid';
 import {Sensor} from "../model/sensor.entity";
 import {Waste} from "../model/waste.entity";
 import {ZoneApiService} from "../services/zone-api.service";
@@ -14,6 +13,8 @@ import {SensorApiService} from "../services/sensor-api.service";
 import {WasteApiService} from "../services/waste-api.service";
 import {SensorShowInfoComponent} from "../components/sensor-show-info/sensor-show-info.component";
 import {SensorDeleteComponent} from "../components/sensor-delete/sensor-delete.component";
+import {MatIcon} from "@angular/material/icon";
+import {StoreDeleteComponent} from "../components/store-delete/store-delete.component";
 
 @Component({
   selector: 'app-controlPanel',
@@ -27,6 +28,8 @@ import {SensorDeleteComponent} from "../components/sensor-delete/sensor-delete.c
     ZoneCreateComponent,
     SensorShowInfoComponent,
     SensorDeleteComponent,
+    MatIcon,
+    StoreDeleteComponent,
   ],
   templateUrl: './controlPanel.component.html',
   styleUrls: ['./controlPanel.component.css']
@@ -42,6 +45,7 @@ export class ControlPanelComponent implements AfterViewInit, OnInit{
   @ViewChild(SensorShowInfoComponent) sensorShowInfoComponent!: SensorShowInfoComponent;
   @ViewChild(SensorDeleteComponent) sensorDeleteComponent!: SensorDeleteComponent;
   @ViewChild(ZoneCreateComponent) zoneCreateComponent!: ZoneCreateComponent;
+  @ViewChild(StoreDeleteComponent) storeDeleteComponent!: StoreDeleteComponent;
 
   protected storeData !: Store;
   protected sensorData !: Sensor;
@@ -77,12 +81,16 @@ export class ControlPanelComponent implements AfterViewInit, OnInit{
     this.sensorCreateAndEditComponent.getStoreNameFromFthr(e);
   };
 
-  showInfoSensor( e: string){
+  showInfoSensor(e: string){
     this.sensorShowInfoComponent.getStoreNameFromFthr(e);
   };
 
   deleteSensor(e: string){
     this.sensorDeleteComponent.getStoreNameFromFthr(e);
+  }
+
+  deleteStore(){
+    this.storeDeleteComponent.getStoreNameFromFthr();
   }
 
   // Get all from api

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '../model/store.entity';
 import {BaseService} from "../../shared/services/base.service";
 import {environment} from "../../../environments/environment";
-import { BehaviorSubject, Observable } from 'rxjs';
+import {BehaviorSubject, map, Observable, tap} from 'rxjs';
 
 const zonesEndPointPath = environment.zoneEndPointPath;
 
@@ -64,5 +64,14 @@ export class ZoneApiService extends BaseService<Store>{
     this.storesSubject.next(stores);
   }
 
+  deleteStore(id: number){
+    return this.delete(id).pipe(
+      tap(() => {
+        const updatedList = this.storesSubject.value.filter(s => s.id !== id);
+        this.storesSubject.next(updatedList)
+      }),
+      map(() => void 0)
+    );
+  }
 
 }
