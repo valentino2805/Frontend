@@ -1,7 +1,9 @@
 {
+
   "welcomeTitle": "Welcome to CleanView",
-  "subtitle": "Kord Industries",
+  "subtitle": "From ------",
   "getStarted": "Get Started",
+
 
   "homeTitle": "Home",
   "controlPanelTitle": "Control Panel",
@@ -9,7 +11,6 @@
   "sustainableActionsTitle": "Sustainable Actions",
   "collectionPointsTitle": "Collection Points",
   "reportsTitle": "Reports",
-  "addCollectionPoint": "Add Collection Point",
 
   "controlPanel": {
     "title" : "View the current level of waste",
@@ -32,7 +33,7 @@
     "annual": "Annual",
     "name": "Name",
     "register" : "Register",
-    "cancel" : "Cancel",
+    "cancel" : "cancel",
     "max-capacity": "Max Capacity (kg)",
     "id-sensor": "Sensor´s ID",
     "unities" : "Unities",
@@ -42,83 +43,11 @@
     "info-sensor": "Sensor List",
     "delete-sensor": "Delete Sensor",
     "num-sensor": "Sensor Number",
-    "percentage": "Percentage"
-  },
-
-
-  "newPointTitle": "New Collection Point",
-  "nameLabel": "Name",
-  "scheduleLabel": "Schedule",
-  "phoneLabel": "Phone",
-  "materialsLabel": "Materials (separated by comma)",
-  "latitudeLabel": "Latitude",
-  "longitudeLabel": "Longitude",
-  "cancelButton": "Cancel",
-  "saveButton": "Save",
-
-  "seeMore": "See More",
-  "delete": "Delete",
-
-
-  "locationLabel": "Location",
-
-  "filterBy": "Filter by",
-  "residue": "Residue",
-  "district": "District",
-
-  "searchPlaceholder": "Search",
-
-  "exportPDF": "Export PDF",
-  "exportExcel": "Export Excel",
-  "month": "Month",
-  "year": "Year",
-  "history": "History",
-  "zone": "Zone",
-  "type": "Type",
-  "kg": "Kg",
-  "date": "Date",
-
-  "sustainableActions": {
-    "title": "Reducing environmental impact is also a smart business strategy.",
-    "subtitle": "Optimize your processes, comply with regulations, and lead the change toward a more sustainable future. Discover key actions for your business.",
-    "featuredTips": "Featured Tips of the Month",
-    "addTitle": "Add Sustainable Action",
-    "titlePlaceholder": "Title",
-    "descriptionPlaceholder": "Description",
-    "selectType": "Select Type",
-    "typeStorage": "Storage",
-    "typeOperational": "Operational Improvement",
-    "typeRegulation": "Regulation",
-    "saveButton": "Save",
-    "all": "All",
-    "searchPlaceholder": "Search sustainable actions",
-    "delete": "Delete"
-  },
-  "login": {
-    "title": "Login",
-    "emailPlaceholder": "Email",
-    "passwordPlaceholder": "Password",
-    "rememberMe": "Remember me",
-    "forgotPassword": "Forgot your password?",
-    "loginButton": "Log In",
-    "noAccount": "Don't have an account?",
-    "registerLink": "Sign Up"
-  },
-  "register": {
-    "title": "Register",
-    "usernamePlaceholder": "Username",
-    "emailPlaceholder": "Email",
-    "passwordPlaceholder": "Password",
-    "selectRole": "Select a role",
-    "roleEmpresa": "Company",
-    "roleAdmin": "Administrator",
-    "registerButton": "Register",
-    "alreadyHaveAccount": "Already have an account?",
-    "loginLink": "Log in"
-  },
-  "auth": {
-    "signIn": "Sign In",
-    "signUp": "Sign Up"
+    "percentage": "Percentage",
+    "amount-sensor": "Amount Sensor",
+    "choose-store": "Choose a Store",
+    "battery": "Battery",
+    "capacity": "Capacity"
   }
 
 }
