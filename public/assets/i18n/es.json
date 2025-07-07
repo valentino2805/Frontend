@@ -47,8 +47,48 @@
     "choose-store": "Elige un almacen",
     "battery": "Batería",
     "capacity": "Capacidad"
+  },
+
+  "login": {
+    "title": "Iniciar Sesión",
+    "emailPlaceholder": "Correo electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "rememberMe": "Recordarme",
+    "forgotPassword": "¿Has olvidado tu contraseña?",
+    "loginButton": "Iniciar Sesión",
+    "noAccount": "¿No tienes una cuenta?",
+    "registerLink": "Registrarme"
+  },
+  "register": {
+    "title": "Registro",
+    "usernamePlaceholder": "Usuario",
+    "emailPlaceholder": "Correo electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "selectRole": "Selecciona un rol",
+    "roleEmpresa": "Empresa",
+    "roleAdmin": "Administrador",
+    "registerButton": "Registrarse",
+    "alreadyHaveAccount": "¿Ya tienes cuenta?",
+    "loginLink": "Iniciar sesión"
+  },
+  "auth": {
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse"
+  },
+  "sustainableActions": {
+    "title": "Reducir el impacto ambiental también es una estrategia empresarial inteligente.",
+    "subtitle": "Optimiza tus procesos, cumple normativas y lidera el cambio hacia un futuro más sostenible. Descubre acciones clave para tu negocio.",
+    "featuredTips": "Tips destacados del mes",
+    "addTitle": "Agregar Acción Sostenible",
+    "titlePlaceholder": "Título",
+    "descriptionPlaceholder": "Descripción",
+    "selectType": "Selecciona Tipo",
+    "typeStorage": "Almacenamiento",
+    "typeOperational": "Mejora Operativa",
+    "typeRegulation": "Normativa",
+    "saveButton": "Guardar",
+    "all": "Todos",
+    "searchPlaceholder": "Buscar acciones sostenibles",
+    "delete": "Eliminar"
   }
-
-
-
 }

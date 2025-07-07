@@ -1,3 +1,4 @@
+<!-- src/app/sustainable-actions/components/tips-list/tips-list.component.html -->
 <section class="tips-list-section">
   <div class="section-header">
     <h2 class="section-title">{{ 'sustainableActions.featuredTips' | translate }}</h2>
@@ -8,9 +9,9 @@
       </div>
       <div class="filter-buttons" id="filterButtons">
         <button [class.active]="filterType === ''" (click)="onFilter('')">{{ 'sustainableActions.all' | translate }}</button>
-        <button [class.active]="filterType === 'almacenamiento'" (click)="onFilter('almacenamiento')">{{ 'sustainableActions.typeStorage' | translate }}</button>
-        <button [class.active]="filterType === 'mejora operativa'" (click)="onFilter('mejora operativa')">{{ 'sustainableActions.typeOperational' | translate }}</button>
-        <button [class.active]="filterType === 'normativas'" (click)="onFilter('normativas')">{{ 'sustainableActions.typeRegulation' | translate }}</button>
+        <button [class.active]="filterType === 'STORAGE'" (click)="onFilter('STORAGE')">{{ 'sustainableActions.typeStorage' | translate }}</button>
+        <button [class.active]="filterType === 'OPERATIONAL'" (click)="onFilter('OPERATIONAL')">{{ 'sustainableActions.typeOperational' | translate }}</button>
+        <button [class.active]="filterType === 'REGULATION'" (click)="onFilter('REGULATION')">{{ 'sustainableActions.typeRegulation' | translate }}</button>
       </div>
     </div>
   </div>

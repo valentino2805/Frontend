@@ -7,7 +7,7 @@ import { ConfirmationDialog } from '../../components/reward-dialog/reward-dialog
 import { Reward } from '../../model/reward.entity';
 import { RewardService } from '../../services/reward.service';
 import { ScoreService } from '../../services/score.service';
-import UserClient from '../../../shared/services/user-client.service';
+import { UserClient } from '../../../shared/services/user-client.service';
 import { Score } from '../../model/score.entity';
 import { ActivityFacadeService } from '../../../shared/services/activity-facade.service';
 import { ActivityReward } from '../../model/activity-reward.entity';
