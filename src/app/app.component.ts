@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { RouterOutlet, RouterModule, Router, NavigationEnd } from '@angular/router'; // Asegúrate de NavigationEnd
+import { RouterOutlet, RouterModule, Router, NavigationEnd } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
@@ -42,8 +42,6 @@ interface MenuOption {
 export class AppComponent implements OnInit {
   title = 'CleanView';
   @ViewChild(MatSidenav, { static: true }) sidenav!: MatSidenav;
-  showAuthButtons = true;
-  showUserIcon = true;
   activeOption: string = '';
   isSidenavOpen = true;
 
@@ -62,9 +60,8 @@ export class AppComponent implements OnInit {
     private translate: TranslateService,
     private observer: BreakpointObserver,
     private router: Router,
-    private authService: AuthService
+    public authService: AuthService
   ) {
-
     translate.setDefaultLang('en');
     translate.use('en');
   }
@@ -76,10 +73,8 @@ export class AppComponent implements OnInit {
         this.sidenav.close();
       } else {
         this.sidenav.mode = 'side';
-
       }
     });
-
 
     this.authService.currentUser.subscribe(() => {
       this.updateMenu();
@@ -92,21 +87,12 @@ export class AppComponent implements OnInit {
     ).subscribe((event: NavigationEnd) => {
       const url = event.urlAfterRedirects;
 
-      if (url === '/login' || url === '/register') {
-        this.showAuthButtons = true;
-        this.showUserIcon = false;
-      } else {
-        this.showAuthButtons = false;
-        this.showUserIcon = true;
-      }
     });
   }
 
   updateMenu() {
     const role = this.authService.getRole();
-
     this.otherOptions = this.allOptions.filter(option =>
-
       !option.roles || (role && option.roles.includes(role))
     );
   }

@@ -74,7 +74,8 @@
   },
   "auth": {
     "signIn": "Sign In",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "logout": "Logout"
   },
   "sustainableActions": {
     "heroTitle": "Reducing environmental impact is also a smart business strategy.",

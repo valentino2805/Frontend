@@ -73,7 +73,8 @@
   },
   "auth": {
     "signIn": "Iniciar sesión",
-    "signUp": "Registrarse"
+    "signUp": "Registrarse",
+    "logout": "Cerrar sesión"
   },
   "sustainableActions": {
     "heroTitle": "Reducir el impacto ambiental también es una estrategia empresarial inteligente.",
