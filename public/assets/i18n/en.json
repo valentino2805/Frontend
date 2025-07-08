@@ -11,6 +11,7 @@
   "sustainableActionsTitle": "Sustainable Actions",
   "collectionPointsTitle": "Collection Points",
   "reportsTitle": "Reports",
+  "addCollectionPoint": "Add Collection Point",
 
   "controlPanel": {
     "title" : "View the current level of waste",
@@ -109,5 +110,35 @@
     "confirmDeletionSubmessage": "This action cannot be undone.",
     "cancelButton": "Cancel",
     "deleteActionButton": "Delete Action"
-  }
+  },
+
+  "newPointTitle": "New Collection Point",
+  "nameLabel": "Name",
+  "scheduleLabel": "Schedule",
+  "phoneLabel": "Phone",
+  "materialsLabel": "Materials (separated by comma)",
+  "latitudeLabel": "Latitude",
+  "longitudeLabel": "Longitude",
+  "cancelButton": "Cancel",
+  "saveButton": "Save",
+
+  "seeMore": "See More",
+  "delete": "Delete",
+  "locationLabel": "Location",
+
+  "filterBy": "Filter by",
+  "residue": "Residue",
+  "district": "District",
+
+  "searchPlaceholder": "Search",
+
+  "exportPDF": "Export PDF",
+  "exportExcel": "Export Excel",
+  "month": "Month",
+  "year": "Year",
+  "history": "History",
+  "zone": "Zone",
+  "type": "Type",
+  "kg": "Kg",
+  "date": "Date"
 }

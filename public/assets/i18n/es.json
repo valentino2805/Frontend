@@ -10,6 +10,7 @@
   "sustainableActionsTitle": "Acciones Sostenibles",
   "collectionPointsTitle": "Puntos de Recolección",
   "reportsTitle": "Reportes",
+  "addCollectionPoint": "Agregar Punto de Acopio",
 
   "controlPanel": {
     "title": "Ver el nivel actual de residuos",
@@ -108,5 +109,35 @@
     "confirmDeletionSubmessage": "Esta acción no se puede deshacer.",
     "cancelButton": "Cancelar",
     "deleteActionButton": "Eliminar Acción"
-  }
+  },
+
+  "newPointTitle": "Nuevo Punto de Acopio",
+  "nameLabel": "Nombre",
+  "scheduleLabel": "Horario",
+  "phoneLabel": "Teléfono",
+  "materialsLabel": "Materiales (separados por coma)",
+  "latitudeLabel": "Latitud",
+  "longitudeLabel": "Longitud",
+  "cancelButton": "Cancelar",
+  "saveButton": "Guardar",
+
+  "seeMore": "Ver Más",
+  "delete": "Eliminar",
+  "locationLabel": "Ubicación",
+
+  "filterBy": "Filtrar por",
+  "residue": "Residuo",
+  "district": "Distrito",
+
+  "searchPlaceholder": "Buscar",
+
+  "exportPDF": "Exportar PDF",
+  "exportExcel": "Exportar Excel",
+  "month": "Mes",
+  "year": "Año",
+  "history": "Historial",
+  "zone": "Zona",
+  "type": "Tipo",
+  "kg": "Kg",
+  "date": "Fecha"
 }
