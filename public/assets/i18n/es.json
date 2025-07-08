@@ -10,6 +10,7 @@
   "sustainableActionsTitle": "Acciones Sostenibles",
   "collectionPointsTitle": "Puntos de Recolección",
   "reportsTitle": "Reportes",
+  "addCollectionPoint": "Agregar Punto de Acopio",
 
   "controlPanel": {
     "title": "Ver el nivel actual de residuos",
@@ -47,8 +48,96 @@
     "choose-store": "Elige un almacen",
     "battery": "Batería",
     "capacity": "Capacidad"
-  }
+  },
 
+  "login": {
+    "title": "Iniciar Sesión",
+    "emailPlaceholder": "Correo electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "rememberMe": "Recordarme",
+    "forgotPassword": "¿Has olvidado tu contraseña?",
+    "loginButton": "Iniciar Sesión",
+    "noAccount": "¿No tienes una cuenta?",
+    "registerLink": "Registrarme"
+  },
+  "register": {
+    "title": "Registro",
+    "usernamePlaceholder": "Usuario",
+    "emailPlaceholder": "Correo electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "selectRole": "Selecciona un rol",
+    "roleEmpresa": "Empresa",
+    "roleAdmin": "Administrador",
+    "registerButton": "Registrarse",
+    "alreadyHaveAccount": "¿Ya tienes cuenta?",
+    "loginLink": "Iniciar sesión"
+  },
+  "auth": {
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "logout": "Cerrar sesión"
+  },
+  "sustainableActions": {
+    "heroTitle": "Reducir el impacto ambiental también es una estrategia empresarial inteligente.",
+    "heroSubtitle": "Optimiza tus procesos, cumple normativas y lidera el cambio hacia un futuro más sostenible. Descubre acciones clave para tu negocio.",
+    "addActionButton": "Agregar Acción Sostenible",
+    "heroImageAlt": "Equipo profesional gestionando residuos de forma sostenible",
+    "featuredTips": "Tips",
+    "searchPlaceholder": "Buscar acciones sostenibles...",
+    "filterBy": "FILTRAR POR",
+    "all": "Todos",
+    "typeStorage": "Almacenamiento",
+    "typeOperational": "Mejora Operativa",
+    "typeRegulation": "Normativa",
+    "result": "resultado",
+    "results": "resultados",
+    "found": "encontrados",
+    "noMatchingActions": "No se encontraron resultados",
+    "noActionsYet": "No hay acciones disponibles",
+    "noActionsOnPage": "No hay acciones en esta página",
+    "tryOtherSearchTerms": "Intenta con otros términos de búsqueda o cambia los filtros",
+    "startCreatingActions": "Comienza creando tu primera acción sostenible",
+    "previousPage": "Página Anterior",
+    "nextPage": "Página Siguiente",
+    "pageInfo": "Página {{currentPage}} de {{totalPages}}",
+    "removeFromFavorites": "Eliminar de favoritos",
+    "addToFavorites": "Añadir a favoritos",
+    "deleteActionTitle": "Eliminar acción",
+    "favorited": "Favorito",
+    "confirmDeletionTitle": "Confirmar Eliminación",
+    "confirmDeletionMessage": "¿Estás seguro de que quieres eliminar \"{{actionTitle}}\"?",
+    "confirmDeletionSubmessage": "Esta acción no se puede deshacer.",
+    "cancelButton": "Cancelar",
+    "deleteActionButton": "Eliminar Acción"
+  },
 
+  "newPointTitle": "Nuevo Punto de Acopio",
+  "nameLabel": "Nombre",
+  "scheduleLabel": "Horario",
+  "phoneLabel": "Teléfono",
+  "materialsLabel": "Materiales (separados por coma)",
+  "latitudeLabel": "Latitud",
+  "longitudeLabel": "Longitud",
+  "cancelButton": "Cancelar",
+  "saveButton": "Guardar",
 
+  "seeMore": "Ver Más",
+  "delete": "Eliminar",
+  "locationLabel": "Ubicación",
+
+  "filterBy": "Filtrar por",
+  "residue": "Residuo",
+  "district": "Distrito",
+
+  "searchPlaceholder": "Buscar",
+
+  "exportPDF": "Exportar PDF",
+  "exportExcel": "Exportar Excel",
+  "month": "Mes",
+  "year": "Año",
+  "history": "Historial",
+  "zone": "Zona",
+  "type": "Tipo",
+  "kg": "Kg",
+  "date": "Fecha"
 }

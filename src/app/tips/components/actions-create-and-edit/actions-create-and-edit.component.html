@@ -1,3 +1,4 @@
+<!-- src/app/sustainable-actions/components/actions-create-and-edit/actions-create-and-edit.component.html -->
 <div class="modal-backdrop" (click)="onCloseClick()">
   <div class="modal-content" (click)="$event.stopPropagation()">
     <button class="modal-close-button" (click)="onCloseClick()">✕</button>
@@ -17,9 +18,10 @@
         <label class="form-label" for="modalType">{{ 'sustainableActions.categoryLabel' | translate }}:</label>
         <select id="modalType" [(ngModel)]="action.type" name="type" required>
           <option value="">{{ 'sustainableActions.selectType' | translate }}</option>
-          <option value="almacenamiento">{{ 'sustainableActions.typeStorage' | translate }}</option>
-          <option value="mejora operativa">{{ 'sustainableActions.typeOperational' | translate }}</option>
-          <option value="normativas">{{ 'sustainableActions.typeRegulation' | translate }}</option>
+
+          <option value="STORAGE">{{ 'sustainableActions.typeStorage' | translate }}</option>
+          <option value="OPERATIONAL">{{ 'sustainableActions.typeOperational' | translate }}</option>
+          <option value="REGULATION">{{ 'sustainableActions.typeRegulation' | translate }}</option>
         </select>
       </div>
 

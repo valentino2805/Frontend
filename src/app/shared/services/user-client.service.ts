@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from '../../users/services/auth.service';
+import { AuthService } from '../../users/services/auth.service'; // Asegúrate de que esta ruta sea correcta
 
 @Injectable({
   providedIn: 'root',
 })
-class UserClient {
+export class UserClient {
   constructor(private readonly authService: AuthService) {}
 
-  // Método para obtener el userId de un usuario
   getUserId(): number | null {
-    return this.authService.getUser()?.id || null;
+    return this.authService.currentUserValue?.id || null;
   }
 }
 
-export default UserClient;

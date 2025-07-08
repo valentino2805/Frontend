@@ -11,6 +11,7 @@
   "sustainableActionsTitle": "Sustainable Actions",
   "collectionPointsTitle": "Collection Points",
   "reportsTitle": "Reports",
+  "addCollectionPoint": "Add Collection Point",
 
   "controlPanel": {
     "title" : "View the current level of waste",
@@ -48,6 +49,96 @@
     "choose-store": "Choose a Store",
     "battery": "Battery",
     "capacity": "Capacity"
-  }
+  },
 
+  "login": {
+    "title": "Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot your password?",
+    "loginButton": "Log In",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Sign Up"
+  },
+  "register": {
+    "title": "Register",
+    "usernamePlaceholder": "Username",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "selectRole": "Select a role",
+    "roleEmpresa": "Company",
+    "roleAdmin": "Administrator",
+    "registerButton": "Register",
+    "alreadyHaveAccount": "Already have an account?",
+    "loginLink": "Log in"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "logout": "Logout"
+  },
+  "sustainableActions": {
+    "heroTitle": "Reducing environmental impact is also a smart business strategy.",
+    "heroSubtitle": "Optimize your processes, comply with regulations, and lead the change towards a more sustainable future. Discover key actions for your business.",
+    "addActionButton": "Add Sustainable Action",
+    "heroImageAlt": "Professional team managing waste sustainably",
+    "featuredTips": "Tips",
+    "searchPlaceholder": "Search sustainable actions...",
+    "filterBy": "FILTER BY",
+    "all": "All",
+    "typeStorage": "Storage",
+    "typeOperational": "Operational",
+    "typeRegulation": "Regulation",
+    "result": "result",
+    "results": "results",
+    "found": "found",
+    "noMatchingActions": "No matching actions found",
+    "noActionsYet": "No actions available yet",
+    "noActionsOnPage": "No actions on this page",
+    "tryOtherSearchTerms": "Try other search terms or change the filters",
+    "startCreatingActions": "Start creating your first sustainable action",
+    "previousPage": "Previous Page",
+    "nextPage": "Next Page",
+    "pageInfo": "Page {{currentPage}} of {{totalPages}}",
+    "removeFromFavorites": "Remove from favorites",
+    "addToFavorites": "Add to favorites",
+    "deleteActionTitle": "Delete action",
+    "favorited": "Favorited",
+    "confirmDeletionTitle": "Confirm Deletion",
+    "confirmDeletionMessage": "Are you sure you want to delete \"{{actionTitle}}\"?",
+    "confirmDeletionSubmessage": "This action cannot be undone.",
+    "cancelButton": "Cancel",
+    "deleteActionButton": "Delete Action"
+  },
+
+  "newPointTitle": "New Collection Point",
+  "nameLabel": "Name",
+  "scheduleLabel": "Schedule",
+  "phoneLabel": "Phone",
+  "materialsLabel": "Materials (separated by comma)",
+  "latitudeLabel": "Latitude",
+  "longitudeLabel": "Longitude",
+  "cancelButton": "Cancel",
+  "saveButton": "Save",
+
+  "seeMore": "See More",
+  "delete": "Delete",
+  "locationLabel": "Location",
+
+  "filterBy": "Filter by",
+  "residue": "Residue",
+  "district": "District",
+
+  "searchPlaceholder": "Search",
+
+  "exportPDF": "Export PDF",
+  "exportExcel": "Export Excel",
+  "month": "Month",
+  "year": "Year",
+  "history": "History",
+  "zone": "Zone",
+  "type": "Type",
+  "kg": "Kg",
+  "date": "Date"
 }

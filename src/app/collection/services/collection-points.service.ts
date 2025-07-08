@@ -8,10 +8,11 @@ import { CollectionPoint } from '../model/collection-points.entity';
 })
 export class CollectionPointsService {
 
-    private apiUrl = 'https://backend-web-applications-1.onrender.com/api/v1/collection-points\n';
+  private apiUrl = 'https://backend-web-applications-production-cb75.up.railway.app/api/v1/collection-points';
 
 
-    constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) {}
 
     getAll(): Observable<CollectionPoint[]> {
         return this.http.get<CollectionPoint[]>(this.apiUrl);
