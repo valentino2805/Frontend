@@ -8,8 +8,8 @@ export const JwtInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, nex
   const authToken = authService.getAuthToken();
 
   const authUrls = [
-    'http://localhost:8092/api/v1/authentication/sign-in',
-    'http://localhost:8092/api/v1/authentication/sign-up'
+    'http://localhost:8080/api/v1/authentication/sign-in',
+    'http://localhost:8080/api/v1/authentication/sign-up'
   ];
 
   const isAuthUrl = authUrls.some(url => req.url.startsWith(url));

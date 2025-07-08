@@ -15,7 +15,8 @@ export class AuthService {
   public currentUser: Observable<User | null>;
 
 
-  private backendApiUrl = 'http://localhost:8092/api/v1/authentication';
+  private backendApiUrl = 'https://backend-web-applications-production-cb75.up.railway.app/api/v1/authentication';
+
 
   constructor(private router: Router, private http: HttpClient) {
 
@@ -41,20 +42,30 @@ export class AuthService {
   login(email: string, password: string): Observable<boolean> {
     const signInResource = { email: email, password: password };
 
-    return this.http.post<{ id: number, username: string, email: string, role: string, token: string }>(
+    return this.http.post<{ id: number, username: string, email: string, roles: string[], token: string }>(
       `${this.backendApiUrl}/sign-in`,
       signInResource
     ).pipe(
       map(response => {
-        const userRole: 'PERSON' | 'COMPANY' = response.role === 'PERSON' ? 'PERSON' : 'COMPANY';
+        // Asegurarte de que el backend devuelve un arreglo de roles
+        const userRole: 'PERSON' | 'COMPANY' = response.roles.length > 0 ? response.roles[0] as 'PERSON' | 'COMPANY' : 'PERSON'; // Elige el primer rol del arreglo
+
         const loggedInUser: User = {
           id: response.id,
           username: response.username,
           email: response.email,
-          role: userRole,
+          role: userRole,  // Asignar el rol correctamente
           token: response.token
         };
 
+        // Loguear los detalles del usuario
+        console.log('[AuthService] Usuario logueado:', {
+          id: loggedInUser.id,
+          email: loggedInUser.email,
+          role: loggedInUser.role
+        });
+
+        // Guardar el usuario en el localStorage y token
         localStorage.setItem('currentUser', JSON.stringify(loggedInUser));
         localStorage.setItem('authToken', loggedInUser.token || '');
         this.authToken = loggedInUser.token || null;
@@ -66,6 +77,8 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+
+
 
 
   register(user: User): Observable<any> {
